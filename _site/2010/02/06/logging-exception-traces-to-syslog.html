@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Logging Exception Traces To syslog</title>
+   <meta name="author" content="Herman J. Radtke III" />
+
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+</head>
+<body>
+
 If you have ever visited <a class="zem_slink" title="Stack Overflow" rel="homepage" href="http://stackoverflow.com/">StackOverflow.com</a> you may have noticed the ads for <a class="zem_slink" title="Splunk" rel="homepage" href="http://www.splunk.com/">Splunk</a>.  Splunk aggregates log files together and provides a web interface to search through those logs.  The setup for php is easy: set the php.ini error_log value to "<a class="zem_slink" title="Syslog" rel="wikipedia" href="http://en.wikipedia.org/wiki/Syslog">syslog</a>".  The Splunk instructions show you how add a single line to your syslong.conf to have syslog send those messages over to Splunk.<!--more-->
 
 The only downside to this is that syslog commonly has a limit of 1024 characters per message.  You can change this, but you have to recompile the kernel.  This is especially frustrating when an uncaught exception gets logged.  The log message looks something like this:
@@ -29,3 +40,7 @@ Invalidparameter number: no parameters were bound' in /some/path/to/Zend/Db/Stat
 Stack trace: #0 /some/path/to/Zend/Db/Statement.php(320): Zend_Db_Statement_Pdo-&gt;_execute(Array)
 #1 /some/path/to/Zend/Db/Adapter/Pdo/Mysql.php(572): Zend_Db_Statement-&gt;execute(Array) #2 /some/
 path/to/Zend/Db</div>
+
+
+</body>
+</html>

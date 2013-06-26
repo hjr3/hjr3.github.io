@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>SPL FilterIterator in the real world</title>
+   <meta name="author" content="Herman J. Radtke III" />
+
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+</head>
+<body>
+
 The Standard PHP Library (SPL) is a powerful set of tools that are often overlooked. It is very common to see an SPL talk at conferences, but those talks usually just introduce each SPL class to the audience without giving some real world examples. I am going to show you a real world example on how to use SPL FilterIterator in an ecommerce website.
 <!--more-->
 This particular ecommerce website sells actual goods. One problem with selling actual goods, instead of virtual goods, is the supply can run out. I have a simple use-case where I don't want to display an item that is sold out. Consider the following example data:
@@ -42,3 +53,7 @@ This isn't some hypothetical example, it actually happened. It was real easy to 
 The last decision you have to make is whether or not to put the logic in a database query. If there is a huge performance boost by writing the logic into the query, it may be worthwhile. A query is still testable, but you have to setup some test data in the database in order to test it (which means you probably won't do write the test for it). It is harder to re-use queries, so the business logic for determining sold out items may be duplicated over a number of queries too. You also might want to consider what happens if you decide to alleviate the database load by putting the list of items for sale in a cache (like APC or memcache).
 
 The SPL classes, especially FilterIterator, really start to shine when dealing with a dataset outside of our control. More and more platforms are becoming service based and we have no control over how the data comes back. Especially when you consider something like the Twitter API timeline response and trying to filter out any tweet that starts with "RT".
+
+
+</body>
+</html>

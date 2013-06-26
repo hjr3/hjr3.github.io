@@ -1,3 +1,8 @@
+---
+title: Misunderstanding DRY
+layout: post
+---
+
 I think the Object Oriented (OO) principle of Don't Repeat Yourself (DRY) is often misunderstood. In particular, the word "repeat" is troublesome. It has nothing to do with minimizing the amount of code you write. It is also not about merging similar methods together into a super-method. The DRY principle is about preserving a single source of truth in a system. When a there are multiple sources of truth in a system we have to write more code to manually keep all the truths in sync with each other. This often leads to unintended consequences to a part of the system when a change is made to a different part of the system. We are left to look through the code looking for these unintended consequences and become increasingly reluctant to change. Properly applying the DRY principle protects us from these unintended consequences and can make our code much more accepting of change.
 
 To those less experienced, DRYing up some parts of the code may not seem like a waste of time in the present. I want to use some code samples in an attempt to prove that fixing even simple DRY violations can be very helpful. The following class is a simple `Car` class.  It starts out with a single method `currentSpeed()` which returns the current speed of the `Car` instance. In a real class, there would be more implementation detail. For now we are just concerned with the speed of the `Car` class. We will change the `Car` and use the DRY principles to help us design good code.

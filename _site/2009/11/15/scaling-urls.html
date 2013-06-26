@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Scaling URL's</title>
+   <meta name="author" content="Herman J. Radtke III" />
+
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+</head>
+<body>
+
 Using non-relative URL's during early development can alleviate a lot of growing pains.  This may seem counter-intuitive at first, but hear me out.  We all learned long ago to stop hard-coding the domain name into the href attribute of an anchor tag.  Instead, we used relative URL's such as '/index.php' to make our code much more portable.  However, relative URL's become a pain point when trying to scale your website.  Let's review some common scenarios that can be averted with some proper planning.
 
 <!--more-->
@@ -36,3 +47,7 @@ And then in a .phtml file you can simply do the following:
 </pre>
 
 Consider prepending the domain for all URL's in your application, not just those types listed above.  There are plenty of scenario's that may require AJAX calls or even normal GET/POST request to use different domains.
+
+
+</body>
+</html>

@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Working with the PHP source tree</title>
+   <meta name="author" content="Herman J. Radtke III" />
+
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+</head>
+<body>
+
 The svn repository for PHP is rather large.  Trying to checkout the entire repo is both time consuming and wastes a lot of space.  Most people, including myself, are only concerned with a subset of the repository.  One of the advantages svn has over git is the ability to do partial checkouts of the repository.  I am going to borrow from an old <a title="svn checkout suggestion" href="http://www.mail-archive.com/internals@lists.php.net/msg43154.html" target="_blank">email</a> Rasmus sent that details how to do a partial checkout of the PHP source code.<!--more-->I mostly work on pecl/memcache and pecl/gearman and send the occasional patch for a php core extension.  I will ignore any other branches of the PHP svn repository that I am not currently working on.
 
 Here is my checkout process:
@@ -31,3 +42,7 @@ Here is my checkout process:
 </li>
 </ul>
 The great thing about this approach is that I can show and hide other  parts of the PHP svn repository at will with only a few svn update  commands.  I regularly add an remove other parts of the PHP svn repository at will.  Combined with <a href="http://lxr.php.net/">http://lxr.php.net/</a>, I can quickly find examples and code I am looking for.
+
+
+</body>
+</html>

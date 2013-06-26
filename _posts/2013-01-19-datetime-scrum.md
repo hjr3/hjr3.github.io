@@ -1,3 +1,8 @@
+---
+title: What do MySQL datetime types and scrum have in common?
+layout: post
+---
+
 What do MySQL datetime types and scrum have in common?
 ======================================================
 

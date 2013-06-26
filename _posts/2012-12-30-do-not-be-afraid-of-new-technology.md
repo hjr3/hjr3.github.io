@@ -1,3 +1,8 @@
+---
+title: Do Not Be Afraid Of New Technology
+layout: post
+---
+
 Do Not Be Afraid Of New Technology
 ==================================
 

@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Writing debuggable code</title>
+   <meta name="author" content="Herman J. Radtke III" />
+
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+</head>
+<body>
+
 Coding standards are religious in nature, ranking high on the list near <a href="http://www.google.com/search?q=vim+vs+emacs">vim vs emacs</a>.  Paul Reinheimer woke up many in the twitterverse with a simple post:
 <p style="text-align: center;"><img class="aligncenter" title="Paul Reinheimer handling errors early tweet" src="http://farm3.static.flickr.com/2044/5709402756_f46668f760_z.jpg" alt="Paul Reinheimer handling errors early tweet" width="542" height="112" /></p>
 This got me thinking about why I prefer to write code the way I do.  I figure most people choose a standard because they are of the opinion that a certain style of coding is more readable and less error prone.  Others are forced to by the community they want to develop in, such as  PEAR or Zend Framework.  I choose my standard for one reason: debug-ability.<!--more-->
@@ -23,3 +34,7 @@ Similar to the last line of code, but it is important to note.  Complex if stat
 Logic inside to create an array key is fine, but assigning it to a variable makes it a lot more clear as to what is being looked up.  I chose to highlight a ternary operator here as I see a lot of younger developers using it for the sole reason that it is less typing and takes up less space than writing out a proper if statement.
 
 All of the above statements can be inspected using a debugger with a little extra work, but when you are stepping through hundreds of lines of code searching for a bug all of these little bits of extra work add up.  The debugger does not lie and the simplest little bits of code can hide the most glaring bugs.  Start writing code with debug-ability in mind and, if you have not already, start using your debugger.
+
+
+</body>
+</html>

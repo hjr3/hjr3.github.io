@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Using Absolute URL's In The View</title>
+   <meta name="author" content="Herman J. Radtke III" />
+
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+</head>
+<body>
+
 We recently had a project at work that involved replacing all the relative URL's from the application with absolute URL's.  In the past, developers had just hard-coded an absolute URL only when they need to force the browser over to https.  Now we are using multiple subdomains, so this approach is no longer sufficient.  We also wanted a way to easy rotate assets through multiple CDN URL's to speed up the time it takes a user's web browser to load all the content.
 <!--more-->
 There are two requirements:
@@ -78,3 +89,7 @@ Notice how there are no problems with static variable conflicts.  Each function 
 The complete source code, with tests and documentation, can be found here: <a href="http://github.com/hradtke/crimson/tree/master/Crimson_Url">http://github.com/hradtke/crimson/tree/master/Crimson_Url</a></pre>
 
 <div style="margin-top: 10px; height: 15px;" class="zemanta-pixie"><a class="zemanta-pixie-a" href="http://reblog.zemanta.com/zemified/b602316b-6c98-4996-aba2-9daac249577a/" title="Reblog this post [with Zemanta]"><img style="border: medium none; float: right;" class="zemanta-pixie-img" src="http://img.zemanta.com/reblog_e.png?x-id=b602316b-6c98-4996-aba2-9daac249577a" alt="Reblog this post [with Zemanta]"></a><span class="zem-script more-related pretty-attribution"><script type="text/javascript" src="http://static.zemanta.com/readside/loader.js" defer="defer"></script></span></div>
+
+
+</body>
+</html>

@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Retrying Failed Gearman Jobs</title>
+   <meta name="author" content="Herman J. Radtke III" />
+
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+</head>
+<body>
+
 The gearman job queue is great for farming out work.  After reading a great post about <a title="Gearman and Poison Messages/Jobs" href="http://endertech.blogspot.com/2009/10/gearman-and-poison-messages-or-jobs.html" target="_blank">Poison Jobs</a>, I limited the number of attempts the gearman daemon will retry a job.  This seemed fairly straight-forward to me: if a job fails, then the gearman daemon will retry the job the specified number of times.  I learned the hard way that it was not that simple.  There is specific criteria the gearman daemon follows in order to retry a job.
 
 <!--more-->
@@ -29,3 +40,7 @@ function func($job)
 </pre>
 
 This will cause your worker to stop running, but so will an uncaught exception.  Most gearman architectures have a monitor that will restart fallen workers.  If you don't, get one and have it send out alerts if any worker exists with a status of non-zero.
+
+
+</body>
+</html>

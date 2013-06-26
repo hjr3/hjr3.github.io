@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Bootstrapping PHPUnit tests</title>
+   <meta name="author" content="Herman J. Radtke III" />
+
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+</head>
+<body>
+
 I just recently stumbled upon PHPUnit's --bootstrap flag.  I used to bootstrap each of my unit tests using a require statement at the top of the file.  I always found this very tedious, but did not want to write some script to wrap each unit test.  The --bootstrap flag solves this problem quite nicely.<!--more-->
 
 My unit tests used to look something like this:
@@ -14,3 +25,7 @@ DIR=`dirname $0`
 phpunit --bootstrap $DIR/TestHelper.php $DIR/crimsontest/AllTests.php
 </pre>
 I already updated all the unit tests in the <a href="https://github.com/hradtke/crimson" target="_blank">Crimson</a> framework to use a the bootstrap strategy.
+
+
+</body>
+</html>

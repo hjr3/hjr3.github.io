@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Patching a bug in a pecl extension</title>
+   <meta name="author" content="Herman J. Radtke III" />
+
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+</head>
+<body>
+
 In my <a title="Building php pecl extensions" href="http://www.hermanradtke.com/blog/building-php-pecl-extensions/" target="_blank">last post</a> I explained how to build a development version of a pecl extension.   Now we will go through the bug lifecycle in the pecl/memcache extension.  Besides writing the actual C code to fix the bug, it is considered a best practice to write a test that verifies the bug has been fixed.  I will use <a title="memcache_set fail with integer value" href="http://pecl.php.net/bugs/bug.php?id=16442" target="_blank">PECL bug #16442 - memcache_set fail with integer value</a> as an example, even though it is already been fixed.<!--more-->
 
 Whether creating a patch for a bug fix yourself or applying a users patch to an existing bug, the process is pretty much the same.  The very first thing I do is create a <a title="PHP QAT website" href="http://qa.php.net/write-test.php" target="_blank">.phpt</a> test for the bug.  A .phpt test is a functional test used in php core and many pecl extensions.  All bug fixes should include a simple test so we can verify the bug is indeed fixed by the patch and to prevent a regression in the code where the bug is reintroduced.  The .phpt functional tests are quick to write and have such a positive long term investment I rarely find myself not wanting to write them.
@@ -59,3 +70,7 @@ I find the .out and .php files most useful when debugging code.  When trying to
 After applying the fix to the memcache source code to allow integer values in memcache_set and using run-tests.php to check if the test pecl16442.phpt passes, we need to make sure we run all the tests.  As I mentioned earlier, the existing tests are a there to help prevent regressions in the source code.  One should always check that all tests pass before committing any new code.  I will mention that this can be frustrating when working with a pecl extension that has tests that always seem to fail.  If this is the case, use your best judgement.  You may also want to fix the failing tests before doing any new work on the extension too.
 
 Once all the tests pass, commit your changed source code files and the .phpt test file(s).  Make sure you do not include any of the failed test files that are automatically generated.  If you do not have commit access, include the source code files in the bug report along with the test.  There is nothing any pecl maintainer likes more than having tests included with the patch.
+
+
+</body>
+</html>

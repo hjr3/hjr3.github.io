@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Mocking Zend Framework's Row and Rowset objects</title>
+   <meta name="author" content="Herman J. Radtke III" />
+
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+</head>
+<body>
+
 If you separate your business logic from your data access logic, the last thing you want to do is make your business logic unit tests reliant on the database.  This is normally not a big deal: retrieve the data, store it in an array and pass it off to the class with the business logic.  Mocking the data for the unit test simply requires you to hardcode from array information in the test.  However, I recently ran into a case where I wanted to pass Zend_Db_Table_Row and Zend_Db_Table_Row objects to the business logic and mocking them was not so easy.
 
 <!--more-->I first attempted to mock Zend_Db_Table_Row using PHPUnit's _getMock method.  This proved to be an exercise in futility.  I did not want the class to connect to the database to verify whether or not the columns were valid.  After a few frustrating hours, I started to wonder how Zend was unit testing Zend_Db_Table_Row.  So I downloaded the full version of the latest Zend Framwork and started poking around.  I stumbled upon My_ZendDbTable_Row_TestMockRow hiding away in ZendFramework-1.9.5/tests/Zend/Db/Table/_files/My/ZendDbTable/Row/TestMockRow.php.  I will not go into what was done to make it a usable mock, but I will show you how to use it.
@@ -81,3 +92,7 @@ class RowsetTest extends PHPUnit_Framework_TestCase
 The array passed to the mock rowset has a similar structure to the one we used above.   The only difference is that we have multiple arrays, inside the 'data' array, each representing one row.   For testing purposes, I created an 'id' field.   I normally would not ever use an artificial key field inside a business logic class since that value is very dependent on the database.
 
 I created a ZendDbTableMockRowset class in my projects test/mocks directory so I can use it in multiple test files.  I also copied My_ZendDbTable_Row_TestMockRow into the test/mocks directory so I would not be dependent on the external tests from Zend Framework.  Now mocking Row or Rowset objects is just as fast as mocking arrays.
+
+
+</body>
+</html>

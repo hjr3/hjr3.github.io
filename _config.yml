@@ -1,1 +1,2 @@
-xclude: [Vagrantfile]
+pygments: true
+exclude: [Vagrantfile]

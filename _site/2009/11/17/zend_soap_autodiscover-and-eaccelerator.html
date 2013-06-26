@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Zend_Soap_AutoDiscover and eAccelerator</title>
+   <meta name="author" content="Herman J. Radtke III" />
+
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+</head>
+<body>
+
 The <a class="zem_slink" title="Zend Framework" rel="homepage" href="http://framework.zend.com/">Zend Framework</a> ships with <a class="zem_slink" title="SOAP" rel="wikipedia" href="http://en.wikipedia.org/wiki/SOAP">SOAP</a> functionality and one especially neat class called Zend_Soap_AutoDiscover.  <a href="http://framework.zend.com/"><img class="alignright" title="Zend Framework Logo" src="http://framework.zend.com/images/logo_small.gif" alt="" width="123" height="23" /></a>This class uses a comment docblock to auto-generate a <a class="zem_slink" title="Web Services Description Language" rel="wikipedia" href="http://en.wikipedia.org/wiki/Web_Services_Description_Language">WSDL</a> at runtime.  I won't go into the details how it works here, but you can check the <a href="http://framework.zend.com/manual/en/zend.soap.autodiscovery.html">Zend Framework documentation</a> for an example.  When using this class at work, I noticed the WSDL would not always generate correctly.  After a lot of digging around, I found the cause: eAccelerator.
 
 <!--more-->
@@ -12,3 +23,7 @@ Now if you are running eAccelerator 0.9.5, like me, and are unable to upgrade th
 <pre lang="php">ini_set('eaccelerator.filter', '!foo/Bar.php !baz.php');</pre>
 With comments preseved, the Zend_Soap_AutoDiscover class will be able to properly generate the WSDL.
 <div class="zemanta-pixie" style="margin-top: 10px; height: 15px;"><a class="zemanta-pixie-a" title="Reblog this post [with Zemanta]" href="http://reblog.zemanta.com/zemified/a0294b42-5e52-4c18-a54b-c96c3d9d7afa/"><img class="zemanta-pixie-img" style="border: medium none ; float: left;" src="http://img.zemanta.com/reblog_e.png?x-id=a0294b42-5e52-4c18-a54b-c96c3d9d7afa" alt="Reblog this post [with Zemanta]" /></a><span class="zem-script more-related pretty-attribution"><script src="http://static.zemanta.com/readside/loader.js" type="text/javascript"></script></span></div>
+
+
+</body>
+</html>

@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Exploring Facebook's Thrift</title>
+   <meta name="author" content="Herman J. Radtke III" />
+
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+</head>
+<body>
+
 At work we have a number of services written in C.  These services use the same core libraries our legacy C application uses.  Keeping all this business logic in a central place makes life much easier, but the way services are written is horribly inefficient.  I am on a mission to find a better way.
 
 <!--more-->
@@ -110,3 +121,7 @@ user    0m0.027s
 sys     0m0.011s</code>
 
 The worst case scenario may seem unfair, but it represents what is really going on with our finance calculations at work.  The complexity is much higher and there are even iterations within iterations to figure out some of the more obscure numbers.  With this comparison, Thrift appears to be a viable alternative to our current approach to services.
+
+
+</body>
+</html>

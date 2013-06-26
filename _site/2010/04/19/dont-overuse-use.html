@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Don't Overuse Use</title>
+   <meta name="author" content="Herman J. Radtke III" />
+
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+</head>
+<body>
+
 Nate Abele just announced <a href="http://rad-dev.org/lithium/wiki/blog/Lithium-0-9-The-Lambdas-are-awesome-Edition">Lithium 0.9</a> on the rad-dev blog.  I think Lithium is a great looking framework and can't wait for it to get a 1.0 release and really start to take off.  However, looking through the examples I started to notice that the use of the "use" namespace keyword was an often used convention.  It reminded me of the require/require_once creep of the days of old.  I was discussing it with Nate via Twitter, but I couldn't seem to get my point across.  Maybe I will have better luck here...
 
 <!--more-->Before PHP  went OO and autoloading existed, users had little choice but to place require_once statements throughout their code to satisfy the application dependencies.  At the start of a project this was fine as the dependencies were thoughtfully mapped out and the require_once statements strategically placed.  However, as time goes on and code goes through maintenance the require_once creep starts to set in.
@@ -16,3 +27,7 @@ Let's fast forward to PHP 5.3.  The "use" keyword is introduced to let users al
 But wait, doesn't it seem like we just went full circle with naming conventions?  We started with simple class names with require_once creep, graduated to autoloading and using super long class names and are now back using simple class names with use creep.  The use creep doesn't have the performance halting side effects of require_once, but it sure seems like it can cause quite a dependency maintenance nightmare.  It may be no problem for you, but what about the guy coding next to you who really doesn't care?
 
 I think I will stick to using the fully qualified namespace (FQN) of a class.  It will take a few more keystrokes, but it keep my dependencies cleaner.
+
+
+</body>
+</html>

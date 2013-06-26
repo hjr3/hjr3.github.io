@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>ORM frameworks are black magic</title>
+   <meta name="author" content="Herman J. Radtke III" />
+
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+</head>
+<body>
+
 I read a really good post from <a title="The Last PHP PDO Library You Will Ever Need " href="http://leftnode.com/entry/the-last-php-pdo-library-you-will-ever-need" target="_blank">Vic on his move away from ORM frameworks</a>. I did not agree with everything he said though and wanted to start a discussion. Unfortunately, there is no way to leave comments on his blog. The next best thing is to post it here.
 
 <!--more-->Like Vic, I too have moved away from using ORM frameworks. One of my biggest problems with ORM frameworks is that they become a de-facto language within themselves. Instead of learning how to write proper SQL according to the SQL-99 standard, I now have to learn SQL and the syntax of the ORM. Things only get worse from there when trying to debug problems of performance and correctness.
@@ -7,3 +18,7 @@ There are some niche tasks where I still use an ORM despite the costs mentioned 
 Vic mentioned that he puts the SQL directory in the controllers, but I think this is a mistake. Controllers are tying the view to the model and should not contain any other logic. I prefer to keep business logic at the library level and data access logic in the model. The controller can consume library or model classes at will and pass them over to the view for output. This may seem like an extra step that is not needed, but it makes testing much easier. There is also the added benefit of being able to write a service layer or API with very little effort should the need arise.
 
 All in all I think Vic makes a good argument. I think developers need to learn to embrace databases, SQL or NoSQL, instead of trying to abstract them away. Data is often the most important part of the business and it should be treated as such.
+
+
+</body>
+</html>

@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Stop Inverted Reuse</title>
+   <meta name="author" content="Herman J. Radtke III" />
+
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+</head>
+<body>
+
 Reuse is a term often used amongst developers.  It usually carries with  it a positive connotation and a developer writing reusable code is seen  as a good thing.  I think there are a lot of developers who have a completely different understanding of what code reuse means.  When I talk about code reuse, I am talking about reusing logic within the code.  Based on code reviews, it  seems the most common definition of reuse is: anytime a function or  method is used by two or more callers.  This definition fails to realize  the true meaning of reuse and can lead to problems.  In the name of  "reuse", I have noticed some developers group common code at the application  level by creating functions or methods that solve some pseudo-generic  problem.  I call this type or reuse <em>inverted reuse</em>.<!--more-->
 
 Inverted  reuse, while initially attractive, often causes a maintenance  nightmare.  A developer notices that they are repeating some common logic over and over (probably through copy and pasting) while writing  some application code and decides to make a common method.  While  preventing copy/paste code is good, it should not be done at the cost of  extensibility and code clarity.  The easiest way to see inverted reuse  is by example.  Consider the following:
@@ -106,3 +117,7 @@ The use of the  protected _filter method is a classic example of inverted reuse.
 I am not going to define the Filter class as it really  does not matter how it gets implemented.  There are a number of benefits to moving the logic in the _filter method into a separate class.  Putting this class at the  library level allows the entire application to use it.  It is also much  easier to unit test this class as it does one thing and it does that thing  abstractly.  We can also extend, wrap or compose this class if there is  the need.  This is a truly object oriented approach to solving the  filter problem.
 
 You might notice that both public methods look very similar.  The  $def array is only slightly different in the update method, the  $optional array is exactly the same and the use of the Filter class is  identical.  This is completely fine.   We are reusing the same business  logic inside the Filter class and that is what code reuse is all about.   Each public method's intention is clearly defined this way too.  The  context (create or update) required for filtering is implicit.  Contrast  this with the _filter method which required an explicit context to be  passed around.  I would argue that using an implicit context not only  makes the code easier to understand, it also reduces the chance of  causing bugs.
+
+
+</body>
+</html>

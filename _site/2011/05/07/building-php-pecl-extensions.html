@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Building php pecl extensions</title>
+   <meta name="author" content="Herman J. Radtke III" />
+
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+</head>
+<body>
+
 My <a title="Working with the PHP source tree" href="http://www.hermanradtke.com/blog/working-with-the-php-source-tree/" target="_blank">last post</a> I explained how to efficiently checkout the php svn repository.  Now we need to start building pecl extensions and even php itself.  I prefer to use Cent OS for my linux needs and naturally use rpm's to track all my packages.  This means I have a stable version of php installed with all the various extensions that I could want.  Rather than messing with this stable version, I am going to build a custom debug build of php in /usr/local.  I say "debug", because this build of php will use the --enable-debug option to allow easy debugging using gdb.  Since I am doing pecl extension development, I don't want to build the trunk version of php.  I want to build my pecl extensions against the most recent stable version of php to isolate environmental issues as much as possible.<!--more-->
 
 Now building php from an svn tag is more tricky than building from a snapshot.  The goal is to start building extensions, so rather than waste time navigating the hurdles of building from svn, I will just grab the latest stable version of php from php.net.  Building php becomes very similar to any other program you have compiled from source.
@@ -43,3 +54,7 @@ Now you can start playing with the code.  If you are unsure where to start, I su
 	<li><a href="http://talks.somabo.de/200711_php_code_camp.pdf" target="_blank">Extending PHP</a></li>
 </ul>
 If you get through all that and still want to know more, I suggest purchasing Sara Goleman's book <a href="http://www.amazon.com/Extending-Embedding-PHP-Sara-Golemon/dp/067232704X" target="_blank">Extending and Embedding PHP</a>.
+
+
+</body>
+</html>
