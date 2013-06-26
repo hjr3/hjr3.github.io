@@ -1,0 +1,35 @@
+It has been said that all languages, over time, implement a dialect of lisp.  <a class="zem_slink" title="PHP" rel="homepage" href="http://www.php.net/">PHP</a> appears to be no exception.  
+<!--more-->
+In PHP 5.3 lambda (or anonymous) functions and closures were added to the language.  These give PHP somewhat of a functional feel and can be very useful tools for solving problems.  One great example is the <a href="http://rad-dev.org/lithium">Lithium</a> framework use of closures to implement filters.  Filters are an implementation of <a class="zem_slink" title="Aspect-oriented programming" rel="wikipedia" href="http://en.wikipedia.org/wiki/Aspect-oriented_programming">aspect oriented programming</a> (AOP).  Other frameworks, like <a class="zem_slink" title="Zend Framework" rel="homepage" href="http://framework.zend.com/">Zend Framework</a>, are looking at these new functional tools to streamline complex and/or heavy components.  I strongly believe that these new functional features will be the new "hotness" for PHP in the coming year.  Expect quite a few conference sessions and tutorials devoted this very topic.
+
+All this talk of <a class="zem_slink" title="Functional programming" rel="wikipedia" href="http://en.wikipedia.org/wiki/Functional_programming">functional language</a> features is great, but Lithium is still in development, Zend Framework 2.0 is a ways away, you have an upcoming project deadline and you want to know how this stuff can help you now.  Easy: go read or watch JavaScript examples.  Seriously.  Watching <a class="zem_slink" title="Douglas Crockford" rel="homepage" href="http://crockford.com/">Douglas Crockford</a>'s videos on YUI theatre or reading through <a class="zem_slink" title="Ext (JavaScript library)" rel="homepage" href="http://extjs.com/">ExtJS</a> source code can give you really good insight into the power of functional language features.  The syntax may be different, but the core ideas are the same.
+
+The new functional feel of PHP seems to have started a trend towards a unified constructor.  This has been a common practice in the JavaScript community for some time.  The great thing is that the PHP array is very similar to the JavaScript object.  In fact, the <a class="zem_slink" title="JSON" rel="homepage" href="http://json.org">JSON</a> extension to PHP makes them completely interchangeable.  Here is a quick example of one unified constructor implementation in PHP:
+
+<pre lang="php">
+<?php
+
+$p = array(
+    'a' => 'hi',
+    'adder' => function($n) { return $n + 1; },
+    'c' => 3,
+    'd' => new stdClass
+);
+
+class base {
+    function __construct(array $params)
+    {
+        foreach ($params as $key => $value) {
+            $this->$key = $value;
+        }
+    }
+}
+
+class foo extends base { }
+
+$foo = new foo($p);
+</pre>
+
+I have a bunch of ideas (some great, some maybe not so great) that I plan on implementing using lambda functions and closures.  I will be adding new components to my <a href="http://github.com/hradtke/crimson">Crimson</a> library and discussing them here.
+
+<div class="zemanta-pixie" style="margin-top: 10px; height: 15px;"><a class="zemanta-pixie-a" title="Reblog this post [with Zemanta]" href="http://reblog.zemanta.com/zemified/276ba760-1b29-4059-bb14-8c6143cf67fc/"><img class="zemanta-pixie-img" style="border: medium none; float: right;" src="http://img.zemanta.com/reblog_e.png?x-id=276ba760-1b29-4059-bb14-8c6143cf67fc" alt="Reblog this post [with Zemanta]" /></a><span class="zem-script more-related pretty-attribution"><script src="http://static.zemanta.com/readside/loader.js" type="text/javascript"></script></span></div>

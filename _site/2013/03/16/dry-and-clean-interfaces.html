@@ -1,0 +1,47 @@
+<h1 id='dry_and_clean_interfaces'>DRY and Clean Interfaces</h1>
+
+<p>The principle of Don&#8217;t Repeat Yourself (DRY) is more than just grouping common code together. When trying to apply the DRY principle, it is easy to start making a mess of a class interface. I recently had to write some code to generate Flickr image URLs from an API response. I needed to generate two types of URLs: a thumbnail and a normal image. Here is one version of code reuse:</p>
+
+<pre><code>- (NSString *)generateFlickrImageUrl:(NSDictionary *)photo withImageType:(NSString *) imageType
+{
+    NSString *imageSize;
+
+    if ([imageType isEqualToString:@&quot;thumbnail&quot;]) {
+        imageSize = @&quot;t&quot;;
+    } else {
+        imageSize = @&quot;z&quot;;
+    }
+
+    NSString *farm = [photo valueForKey:@&quot;farm&quot;];
+    NSString *server = [photo valueForKey:@&quot;server&quot;];
+    NSString *photoId = [photo valueForKey:@&quot;id&quot;];
+    NSString *secret = [photo valueForKey:@&quot;secret&quot;];
+    NSString *url = [NSString stringWithFormat:@&quot;http://farm%@.staticflickr.com/%@/%@_%@_%@.jpg&quot;, farm, server, photoId, secret, imageSize];
+    
+    return url;
+}</code></pre>
+
+<p>While this does reuse code, it is bad because the code is not accepting of change. If I have to add some other sort of image type, then I have to modify this function. This is a big red flag. When you start using method parameters as an extension of your interface, you may be making the code hard to change. Also, anyone using this class will have to look for the list of available options for the <code>imageType</code> parameter. I think it is better to design a easy to understand interface instead.</p>
+
+<pre><code>- (NSString *)generateFlickrImageUrl:(NSDictionary *)photo withImageSize:(NSString *) imageSize
+{
+    NSString *farm = [photo valueForKey:@&quot;farm&quot;];
+    NSString *server = [photo valueForKey:@&quot;server&quot;];
+    NSString *photoId = [photo valueForKey:@&quot;id&quot;];
+    NSString *secret = [photo valueForKey:@&quot;secret&quot;];
+    NSString *url = [NSString stringWithFormat:@&quot;http://farm%@.staticflickr.com/%@/%@_%@_%@.jpg&quot;, farm, server, photoId, secret, imageSize];
+    
+    return url;
+}
+
+- (NSString *)generateImageUrlThumbnail:(NSDictionary *)photo
+{
+    return [self generateFlickrImageUrl:photo withImageSize:@&quot;t&quot;];
+}
+
+- (NSString *)generateImageUrl:(NSDictionary *)photo
+{
+    return [self generateFlickrImageUrl:photo withImageSize:@&quot;z&quot;];
+}</code></pre>
+
+<p>The <code>generateFlickrImageUrl</code> is now a protected method of the class while the <code>generateImageUrl</code> and <code>generateImageUrlThumbnail</code> methods define the public interface.</p>

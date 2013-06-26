@@ -1,0 +1,19 @@
+I have wanted to replace the static Blogroll on my website with a listing of my Google Reader subscriptions. I figured this was easy and someone would have already made this a Wordpress plugin, but I was wrong. The Google Reader API is not yet official and not very well documented. I finally sat down to figure out exactly how to do this and with a little Google research I managed to hack together a working prototype.<!--more-->
+
+<script src="https://gist.github.com/1127778.js?file=google-reader-subscriptions.php"></script>
+
+The problem is broken down into two steps. The ClientLogin part of the Google Data Protocol must be used to obtain an Auth token. The ClientLogin is simply a GET request with three paramters. The service parameter gives the user access to the particular API. In this case, the service parameter value is "reader" for Google Reader. The next two parameters are email and password. These values are the same as what one would use to login to Google Reader using a normal webpage. The response will contain newline delimited key/value pairs. One of those pairs will be the Auth token.
+
+Requests to the Google Reader API can then be made using this Auth token in an Authorization header. I chose to add the "output" parameter to my request so the response would be json instead of the default xml.
+
+Here are some of the resources I used to figure this all out:
+<ul>
+	<li><a href="http://code.google.com/p/pyrfeed/wiki/GoogleReaderAPI" target="_blank">GoogleReaderAPI</a></li>
+	<li><a href="http://blog.martindoms.com/2009/08/15/using-the-google-reader-api-part-1/" target="_blank">Using the Google Reader API</a></li>
+	<li>
+<div>
+<div><a href="http://groups.google.com/group/fougrapi/browse_thread/thread/e331f37f7f126c00?pli=1" target="_blank">Changes to sending authenticated requests to Google Reader</a></div>
+</div></li>
+	<li><a href="http://code.google.com/apis/gdata/docs/auth/clientlogin.html" target="_blank">ClientLogin in the Google Data Protocol Client Libraries</a></li>
+</ul>
+Using this prototype I will create a Wordpress widget to display my Google Reader subscription list and get rid of my static Blogroll.

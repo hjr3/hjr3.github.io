@@ -1,0 +1,16 @@
+---
+layout: post
+title: Managing Gearman With Gearadmin Tool
+tags:
+- gearman
+- php
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '1'
+  dsq_thread_id: '661974599'
+---
+The more jobs flowing through Gearman, the more likely something will happen. Queues can get backed up, workers can crash and performance can degrade. It is important to monitor the status of the Gearman ecosystem and be proactive about fixing problems. We can do this using the <em>gearadmin</em> tool.<!--more-->The <em>gearadmin</em> program is a relatively new program that makes administration of Gearman easier. Before the release of gearman 0.19 the only way to query the gearman daemon was to use telnet. You still can use telnet and reference the Administrative Protocol section <a href="http://gearman.org/?id=protocol">http://gearman.org/?id=protocol</a> for a list of commands. While telnet is a still an option, the <em>gearadmin</em> tool saves a lot of boilerplate scripts from being written. The <em>gearadmin</em> tool is really nothing more than a wrapper around the telnet commands. It does make capturing the output a little easier and you don't have to memorize the commands.
+
+I wish the <em>gearadmin</em> output was a little nicer to read. The raw dump of the telnet output leaves the data a little cryptic.

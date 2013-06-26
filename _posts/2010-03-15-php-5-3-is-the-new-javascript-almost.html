@@ -1,0 +1,94 @@
+---
+layout: post
+title: PHP 5.3 is the new JavaScript (almost)
+tags:
+- closure
+- functional
+- php
+- php53
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '1'
+  dsq_thread_id: '551183415'
+---
+In my last post, I argued that the best way to start developing functional PHP applications was to code review some JavaScript projects.   I think this is a good place to start as most web developers have written some JavaScript at one point during their career.  I briefly mentioned that the array is pretty similar to the JavaScript object too.   However, if you start hacking away at PHP based on JavaScript's functional syntax, you will quickly run into some problems.
+
+<!--more-->One major difference between PHP and JavaScript style closures.  Here is a typical JavaScript closure:
+<pre lang="javascript">
+// start counting from some number
+function counter(n) {
+    return function() {
+        return n++;
+    }
+}
+
+countFrom3 = counter(3);
+console.log(countFrom3());
+console.log(countFrom3());
+console.log(countFrom3());
+console.log(countFrom3());
+</pre>
+
+We can write this same function in PHP.  The main difference is the "use" identifier required for closure:
+<pre lang="php">
+<?php
+function counter($n) {
+    return function() use($n) {
+        return $n++;
+    };
+}
+
+$countFrom3 = counter(3);
+echo $countFrom3(), PHP_EOL;
+echo $countFrom3(), PHP_EOL;
+echo $countFrom3(), PHP_EOL;
+echo $countFrom3(), PHP_EOL;
+</pre>
+
+If you run this code, it will not work as expected: every number will be 3.  Why?  Well, the closure RFC for PHP requires that variables are only explicitly passed by reference.  That means we need to use modify the function signature:
+<pre lang="php">
+<?php
+function counter($n) {
+    return function() use(&$n) { // <--- note the pass by reference syntax
+        return $n++;
+    };
+}
+</pre>
+
+Now JavaScript does not have traditional classes like PHP.  Instead, we define an object with a set of variables.  Object methods are simply variables that reference an anonymous function.  Something like this:
+
+<pre lang="javascript">
+obj = {};
+obj.add = function(l, r) {
+    return l + r;
+};
+
+console.log(obj.add(1, 2));
+</pre>
+
+Let's write that same function in PHP.  It has very similar syntax:
+<pre lang="php">
+<?php
+$obj = new stdClass;
+$obj->add = function($l, $r) {
+    return $l + $r;
+};
+
+echo $obj->add(1, 2), PHP_EOL;
+</pre>
+
+If you run this you will notice that PHP complains that the object does not have that method.  In PHP, functions are not quite first class citizens.  The variable function is completely ignored and only explicitly declared method's are allowed to be called this way.  We need to modify our example to make this work:
+<pre lang="php">
+<?php
+$obj = new stdClass;
+$obj->add = function($l, $r) {
+    return $l + $r;
+};
+
+$add = $obj->add;
+echo $add(1, 2), PHP_EOL;
+</pre>
+
+With these nuances out of the way, you have can have a productive functional hacking session.  Have fun!

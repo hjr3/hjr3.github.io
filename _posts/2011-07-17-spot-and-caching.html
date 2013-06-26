@@ -1,0 +1,19 @@
+---
+layout: post
+title: SPOT and caching
+tags:
+- architecture
+- data
+- memcache
+- spot
+status: draft
+type: post
+published: false
+meta:
+  _edit_last: '1'
+---
+<a href="http://teddziuba.com/" target="_blank">Ted Dzuiba</a> <a title="The Most Important Concept in Systems Design" href="http://teddziuba.com/2011/06/most-important-concept-systems-design.html" target="_blank">wrote</a> a really good blog post on systems design. I have to disagree with his point about not caching data below the presentation layer though. The key point of SPOT is that there is a single, unambiguous authority  representing the data in a system. Using something like memcache does  not violate this principle. It should already be known that memcache is  not the authority of it the data. This is not just my opinion, it is the opinion of Eric S. Raymond too. When dealing with duplicated data, Eric says to determine if one representation can be created from the other. This is exactly what a cache is.
+
+Ted warns that the cached data my not be the same as the authoritative data in the database. This commonly referred to as data inconsistency. Writing the code to cache the data and then making sure it is consistent with the database can add  a lot of complexity to the system. When a system becomes more complex it becomes more difficult to add new features and can often be a source of bugs. What this means is that caching data has consequences. Anyone competent in systems design will tell you that each decision has consequences. As long as the pros and cons of a decision are understood, the proper trade-off can be made.
+
+Data inconsistency can happen on at the edge server level just as easily as it can with memcache. As the need to scale arises, cronjobs can just as easily be written to push content to the edge servers. As long as there is proper monitoring in place and a plan for when disaster strikes, I think caching can happen at any level.
