@@ -1,0 +1,101 @@
+.clear {
+    clear: both;
+}
+
+body {
+    background-image: url('/css/background.jpg');
+    background-repeat: repeat;
+    font-size: 18px;
+    line-height: 24px;
+    margin: 24px;   
+}
+
+section {
+    width: 50%;
+    margin: auto;
+    background-color: rgba(239, 239, 239, .6);
+    padding: 6px;
+}
+
+h1 {
+    font-size: 42px;
+    line-height: 63px;
+    color: 33302B;
+    font-family: Helvetica;
+    text-align: center;
+}
+
+hr {
+    width: 75%;
+}
+
+a:link {
+    color: #3B75B0;
+}
+
+a:visited {
+    color: #274E75;
+}
+
+a:hover {
+    color: #75C2FF;
+}
+
+a:active {
+    color: #75C2FF;
+}
+
+.posts {
+    list-style-type: square;
+}
+
+.posts li a {
+    font-weight: bold;
+    font-family: Helvetica;
+    line-height: 24px;
+    text-decoration: none;
+}
+
+.posts li span {
+    color: #808080;
+}
+
+pre {
+    background-color: #C7C7C7;
+    padding: 6px;
+}
+
+nav ul {
+    list-style-type: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    float: left;
+    width: 20%;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: block;
+    text-align: center;
+
+}
+
+footer {
+    text-align: right;
+}
+
+footer p {
+    display: inline;
+    font-size: 12px;
+}
+
+/*
+.twitter-share-button { 
+    vertical-align: middle;
+}
+*/

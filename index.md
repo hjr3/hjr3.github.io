@@ -3,7 +3,7 @@ title: index.html
 layout: default
 ---
 
-<ul>
+<ul class="posts">
   {% for post in site.posts %}
     <li>
       <a href="{{ post.url }}">{{ post.title }}</a>
