@@ -94,6 +94,10 @@ footer p {
     font-size: 12px;
 }
 
+p.center {
+    text-align: center;
+}
+
 /*
 .twitter-share-button { 
     vertical-align: middle;
