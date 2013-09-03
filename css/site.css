@@ -17,6 +17,12 @@ section {
     padding: 6px;
 }
 
+@media all and (max-width: 699px) {
+    section {
+        width: 98%;
+    }
+}
+
 h1 {
     font-size: 42px;
     line-height: 63px;
