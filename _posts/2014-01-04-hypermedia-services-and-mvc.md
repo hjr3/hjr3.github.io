@@ -86,7 +86,7 @@ properties:
     name: fullName
 ```
 
-The user class is serialized into the correct media type based on the description. The relations describe how the user relates to other resources in the API. The properties describe how to represent the resource to the client. In this case, we do not show first and last name separate. More importantly, we do not include the user_id in the response. It is probably not important to the client what the user id is, except to create URLs. We have the relations to avoid client-side URL generation though. Also, notice how the addresses are embedded in the representation of a user. The serializer would look up how to represent the address and serialize it accordingly.
+The user class is serialized into the correct media type based on the description. The `relations` section describes how the user relates to other resources in the API. The `properties` section describes how to show the resource to the client. In this case, we do not show first and last name separate properties but instead show one `name` property. More importantly, we do not include the user_id in the response. It is probably not important to the client what the user id is, except to create URLs. We have the relations to avoid client-side URL generation though. Also, notice how the addresses are embedded in the representation of a user. The serializer would look up how to represent the address and serialize it accordingly.
 
 The above DSL is loosely based on the [Symfony 2 HATEOAS bundle](http://hateoas-php.org/) that we use at HauteLook. Reading through the documentation you may notice that it uses funky PHP annotations. This is just a preference of the maintainers. There is also built-in support to use separate PHP or XML files to describe the view.
 
