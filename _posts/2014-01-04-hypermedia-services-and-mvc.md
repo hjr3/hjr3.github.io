@@ -23,7 +23,7 @@ This post is not intended to present the best way to design and build hypermedia
 
 Let's start with the controller. According to the [Gang of Four](http://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612), the controller "defines the way the user interface reacts to user input". In the context of a hypermedia service, _user input_ comes in the form of a request. The request is most commonly sent using HTTP, but could use another protocol such as FTP. We will be assuming HTTP for the rest of this post. The _user interface_ is the API response the server sends back to the client. In a hypermedia API, the response is based on which resources the client (user) is requesting and what media type the client prefers.
 
-Let us use the following example:
+Let us use the example below. We can assume that the client is knowledgeable of the `/users/42` URL because it made a HTTP GET request to `/` and received a list of user relations it can then request.
 
 ```
 GET /users/42 HTTP\1.1
