@@ -16,7 +16,7 @@ published: true
 
 This blog post is in response to the discussion started by the [tweet](https://twitter.com/nateabele/statuses/418965626410270720) below:
 
-<blockquote class="twitter-tweet" lang="en" align="center"><p>Incidentally, MVC is a REALLY poor fit for designing hypermedia services. So that’s fun, everyone who thought you knew what you were doing.</p>&mdash; Nate Abele (@nateabele) <a href="https://twitter.com/nateabele/statuses/418965626410270720">January 3, 2014</a></blockquote>
+<blockquote class="twitter-tweet" lang="en" align="center"><p>Incidentally, MVC is a REALLY poor fit for designing hypermedia services. So that's fun, everyone who thought you knew what you were doing.</p>&mdash; Nate Abele (@nateabele) <a href="https://twitter.com/nateabele/statuses/418965626410270720">January 3, 2014</a></blockquote>
 <script async="async" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 This post is not intended to present the best way to design and build hypermedia services. My goal is present a high level description of how we have built and designed a hypermedia API at HauteLook within the context of the MVC Architectual Pattern. That being said, I am always looking for ways to improve.
