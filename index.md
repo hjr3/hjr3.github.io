@@ -1,5 +1,5 @@
 ---
-title: index.html
+title: Herman J. Radtke III Blog
 layout: default
 ---
 
