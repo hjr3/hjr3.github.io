@@ -1,6 +1,6 @@
 ---
 title: Herman J. Radtke III Blog
-layout: default
+layout: index
 ---
 
 <ul class="posts">
