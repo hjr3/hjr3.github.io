@@ -3,9 +3,6 @@ title: DRY and Clean Interfaces
 layout: post
 ---
 
-DRY and Clean Interfaces
-========================
-
 The principle of Don't Repeat Yourself (DRY) is more than just grouping common code together. When trying to apply the DRY principle, it is easy to start making a mess of a class interface. I recently had to write some code to generate Flickr image URLs from an API response. I needed to generate two types of URLs: a thumbnail and a normal image. Here is one version of code reuse:
 
 {% highlight objective-c %}

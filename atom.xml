@@ -1,19 +1,17 @@
-# encoding: utf-8
-
 ---
 layout: nil
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
  
- <title>Tom Preston-Werner</title>
+ <title>Herman J. Radtke III</title>
  <link href="http://hermanradtke.com.com/atom.xml" rel="self"/>
  <link href="http://hermanradtke.com/"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
  <id>http://hermanradtke.com/</id>
  <author>
    <name>Herman J. Radtke III</name>
-   <email>hermanradtke@gmail.com</email>
+   <email>herman@hermanradtke.com</email>
  </author>
 
  {% for post in site.posts %}

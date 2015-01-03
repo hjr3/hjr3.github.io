@@ -1,27 +1,46 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
-<head>
-   {% include head.html %}
-</head>
-<body>
-    <section>
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a target="_blank" href="/atom.xml">Atom Feed</a></li>
-                    <li><a target="_blank" href="https://github.com/hjr3">Github</a></li>
-                    <li><a target="_blank" href="https://twitter.com/hermanradtke">Twitter</a></li>
-                    <li><a target="_blank" href="https://about.me/hermanradtke">about.me</a></li>
-                </ul>
-            </nav>
-        </header>
-        <div class="clear"></div>
-        <hr />
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="author" content="Herman J. Radtke III" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title }}</title>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="/css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="/css/syntax.css"/>
+  </head>
+  <body>
+    <div class="container post">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+	  <header>
+            <h1>{{ site.author.name }}</h1>
+	    <p>Read more of my {{ site.blog }} or subscribe to my {{ site.feed }}.</p>
+	  </header>
 
-        {{ content }}
+          <hr/>
 
-        {% include footer.html %}
-    </section>
-</body>
+	  <article>
+	    <header>
+              <h1 class="title">{{ page.title }}</h1>
+              <p class="text-muted">Written by {{ site.author.name }} on {{ page.date | date_to_string }}</p>
+	    </header>
+	    
+	    {{ content }}
+	    
+	  </article>
+
+          <hr/>
+
+	  <footer>
+	    {% include twitter.html %}
+	  </footer>
+        </div>
+      </div>
+    </div>
+    {% if site.env != 'development' %}
+        {% include ga.html %}
+    {% endif %}
+  </body>
 </html>

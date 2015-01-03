@@ -11,8 +11,6 @@ type: post
 published: true
 ---
 
-# Testing Repeated Elements With Behat+Mink
-
 The Mink extension to behat makes it really easy to test the contents of a page. I can use the `assertElementContainsText` feature to assert that some text exists within a certain element:
 
 {% highlight gherkin %}

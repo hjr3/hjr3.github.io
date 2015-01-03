@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
-<head>
-    {% include head.html %}
-
-    {% if page.url == "/404.html" %}
-        <meta http-equiv="refresh" content="5; url=/">
-    {% endif %}
-</head>
-<body>
-
-    <section>
-        <header>
-            <h1>Herman J. Radtke III</h1>
-        </header>
-        <hr />
-
-        {{ content }}
-
-        {% include footer.html %}
-    </section>
-
-</body>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ page.title }}</title>
+        <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+        <link type="text/css" rel="stylesheet" href="{{ site.baseurl }}css/style.css"/>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    {{ content }}
+                </div>
+            </div>
+        </div>
+        {% if site.env != 'development' %}
+            {% include ga.html %}
+        {% endif %}
+    </body>
 </html>

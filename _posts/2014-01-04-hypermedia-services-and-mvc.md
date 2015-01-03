@@ -12,8 +12,6 @@ type: post
 published: true
 ---
 
-# Hypermedia Services and MVC
-
 This blog post is in response to the discussion started by the [tweet](https://twitter.com/nateabele/statuses/418965626410270720) below:
 
 <blockquote class="twitter-tweet" lang="en" align="center"><p>Incidentally, MVC is a REALLY poor fit for designing hypermedia services. So that's fun, everyone who thought you knew what you were doing.</p>&mdash; Nate Abele (@nateabele) <a href="https://twitter.com/nateabele/statuses/418965626410270720">January 3, 2014</a></blockquote>
