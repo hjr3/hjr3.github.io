@@ -8,7 +8,7 @@ type: post
 published: true
 ---
 
-I listened to the [Changelog podcast on Rust](https://thechangelog.com/151/) recently and loved the remark about enabling web developers to get into systems programming. I have been thinking about the way we design code in the web world versus the way we design code in Rust. In the web world, we often use a hash/dict/map to hide hard-coded values behind a nicer interface. Consider an example where you want to would want to write a function to create the escape sequence for colors in a TTY terminal. You might write something like this in Ruby:
+I listened to the [Changelog podcast on Rust](https://thechangelog.com/151/) recently and loved the remark about enabling web developers to get into systems programming. I have been thinking about the way we design code in the web world versus the way we design code in Rust. In the web world, we often use a hash/dict/map to hide hard-coded values behind a nicer interface. Consider an example where you would want to write a function to create the escape sequence for colors in a TTY terminal. You might write something like this in Ruby:
 
 {% highlight ruby %}
 def color(fg, bg=:default)
