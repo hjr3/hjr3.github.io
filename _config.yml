@@ -3,6 +3,8 @@ highlighter: pygments
 kramdown:
   input: GFM
 
+future: false
+
 exclude: [Vagrantfile]
 
 paginate: 5
