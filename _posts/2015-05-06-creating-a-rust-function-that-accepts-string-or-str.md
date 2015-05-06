@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Creating a function that accepts String or &str"
+title: "Creating a Rust function that accepts String or &str"
 tags:
 - rustlang
 status: publish
