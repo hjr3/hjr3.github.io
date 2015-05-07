@@ -230,6 +230,11 @@ fn main() {
 
 The `'static` lifetime is valid for the entire program. You may not need `Person` or `name` to live that long.
 
+## Related
+
+   * [Creating a Rust function that accepts String or &str][related post]
+
+
 [String]: https://doc.rust-lang.org/std/string/struct.String.html?search=String
 [Deref]: http://doc.rust-lang.org/nightly/std/ops/trait.Deref.html
 [Deref coercions]: http://doc.rust-lang.org/nightly/book/deref-coercions.html
@@ -237,3 +242,4 @@ The `'static` lifetime is valid for the entire program. You may not need `Person
 [rustc_serialize]: https://github.com/rust-lang/rustc-serialize/blob/master/src/json.rs#L552
 [std::fmt::Write]: http://doc.rust-lang.org/nightly/std/fmt/trait.Write.html
 [encode]: https://github.com/rust-lang/rustc-serialize/blob/master/src/json.rs#L372
+[related post]: /2015/05/06/creating-a-rust-function-that-accepts-string-or-str.html
