@@ -3,6 +3,9 @@ highlighter: pygments
 kramdown:
   input: GFM
 
+gems:
+  - jekyll-sitemap
+
 exclude: [Vagrantfile]
 
 paginate: 5
