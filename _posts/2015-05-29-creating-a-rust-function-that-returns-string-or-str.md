@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Creating a function that returns a &str or String"
+title: "Creating a Rust function that returns a &str or String"
 tags:
 - rustlang
 status: publish
