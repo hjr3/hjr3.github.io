@@ -13,9 +13,8 @@ We learned how to [create a function that accepts String or &str][Into<String>] 
 ```rust
 fn remove_spaces(input: &str) -> String {
    let mut buf = String::with_capacity(input.len());
-   let v: Vec<char> = input.chars().collect();
 
-   for c in v {
+   for c in input.chars() {
       if c != ' ' {
          buf.push(c);
       }
@@ -44,9 +43,8 @@ use std::borrow::Cow;
 fn remove_spaces<'a>(input: &'a str) -> Cow<'a, str> {
     if input.contains(' ') {
         let mut buf = String::with_capacity(input.len());
-        let v: Vec<char> = input.chars().collect();
         
-        for c in v {
+        for c in input.chars() {
             if c != ' ' {
                 buf.push(c);
             }
