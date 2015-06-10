@@ -14,7 +14,9 @@ Learn more <a href="http://about.me/hermanradtke">about me</a>.
 </p>
 
 <!-- eventually make this featured articles -->
-<h2>Recent Articles</h2>
+<h2>Articles</h2>
+
+<h3>Recent</h3>
 <ul>
   {% for post in site.posts limit: 5 %}
     <li>
@@ -23,17 +25,16 @@ Learn more <a href="http://about.me/hermanradtke">about me</a>.
   {% endfor %}
 </ul>
 
+<h3>Rust</h3>
+
+<p>My <a href="/tags/rustlang.html">#rustlang</a> articles.</p>
+
+<h3>Archive</h3>
+
+<p>Complete listing of all <a href="/archive.html">articles</a>.</p>
+
 <h2>Projects</h2>
 {% for project in site.projects %}
   <h3><a href="{{ project.link }}">{{ project.name }}</a></h3>
   <p>{{ project.description }}</p>
 {% endfor %}
-
-<h2>Older Articles</h2>
-<ul>
-  {% for post in site.posts offset: 5 %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>  - <small>{{ post.date | date_to_string }}</small>
-    </li>
-  {% endfor %}
-</ul>
