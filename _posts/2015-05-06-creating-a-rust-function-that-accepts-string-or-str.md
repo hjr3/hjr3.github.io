@@ -80,6 +80,11 @@ impl Person {
 }
 ```
 
+## Related
+
+   * [String vs &str in Rust functions](http://hermanradtke.com/2015/05/03/string-vs-str-in-rust-functions.html)
+   * [Creating a Rust function that returns a &str or String](http://hermanradtke.com/2015/05/29/creating-a-rust-function-that-returns-string-or-str.html)
+
 [last post]: /2015/05/03/string-vs-str-in-rust-functions.html
 [Into trait]: http://doc.rust-lang.org/nightly/core/convert/trait.Into.html
 [Generics]: http://doc.rust-lang.org/nightly/book/generics.html

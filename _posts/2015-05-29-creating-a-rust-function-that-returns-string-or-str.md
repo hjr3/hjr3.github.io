@@ -122,6 +122,11 @@ A `String` is really a `Vec` of UTF-8 code points. When `String::new()` is calle
 
 In general, we want to allocate new memory only when we need it and only allocate as much as we need. For small strings, like `remove_spaces("Herman Radtke")`, the overheard of re-allocating memory is not a big deal. What if I wanted to remove all of the spaces in each JavaScript file for my website? The overhead of re-allocating memory for a buffer is much higher. When pushing data onto a vector (String or otherwise) it can be a good idea to specify a capacity to start with. The best situation is when you already know the length and the capacity can be exactly set. The [code comments][Vec code comments] for `Vec` give a similar warning.
 
+## Related
+
+   * [String vs &str in Rust functions](http://hermanradtke.com/2015/05/03/string-vs-str-in-rust-functions.html)
+   * [Creating a Rust function that accepts String or &str](http://hermanradtke.com/2015/05/06/creating-a-rust-function-that-accepts-string-or-str.html)
+
 
 [Cow]: https://doc.rust-lang.org/stable/std/borrow/enum.Cow.html
 [Big O]: https://en.wikipedia.org/wiki/Analysis_of_algorithms
