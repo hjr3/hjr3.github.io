@@ -87,7 +87,7 @@ fn main() {
       trimmed_name.len()
    };
 
-   let trimmed_name_len = f(&name.as_str());
+   let trimmed_name_len = f(&name);
 
    println!("Length of trimmed string is {}", trimmed_name_len);
    let owned_name = name;
