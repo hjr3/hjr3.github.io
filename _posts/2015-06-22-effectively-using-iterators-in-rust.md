@@ -215,9 +215,10 @@ There is a really great crate, called [itertools][itertools], that provides extr
 
 ## Related
 
-   * [Creating a Rust function that accepts String or &str](http://hermanradtke.com/2015/05/06/creating-a-rust-function-that-accepts-string-or-str.html)
+   * [Creating a Rust function that accepts String or &str](/2015/05/06/creating-a-rust-function-that-accepts-string-or-str.html)
 
 
+[previous blog post]: /2015/06/09/strategies-for-solving-cannot-move-out-of-borrowing-errors-in-rust.html
 [core::convert::Into]: https://doc.rust-lang.org/nightly/core/convert/trait.Into.html
 [std::iter::Iterator]: https://doc.rust-lang.org/stable/std/iter/trait.Iterator.html
 [std::iter::IntoIterator]: https://github.com/rust-lang/rust/blob/b5b3a99f84f2b4dbf9495dccd7112c74f4357acc/src/libcore/iter.rs#L1184-1192
