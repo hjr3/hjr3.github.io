@@ -187,8 +187,8 @@ If we clone all of `x`, then we are cloning all four elements, but we only need 
 fn main() {
     let x = vec!["Jill", "Jack", "Jane", "John"];
 
-    let _ = x
-        .into_iter()
+    let y = x
+        .iter()
         .map(|i| i.clone())
         .take(2)
         .collect::<Vec<_>>();
@@ -202,7 +202,7 @@ fn main() {
     let x = vec!["Jill", "Jack", "Jane", "John"];
 
     let y = x
-        .into_iter()
+        .iter()
         .cloned()
         .take(2)
         .collect::<Vec<_>>();
