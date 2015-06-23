@@ -12,7 +12,7 @@ In Rust, you quickly learn that vector and slice types are not iterable themselv
 
 ## Iter
 
-Most examples I have found use `.iter()`. We can call `v.iter()` on something like a vector or slice. This creates an `Iter<'a, T>` type and it is this `Iter<'a T>` type that implements the `Iterator` trait and allows us to call functions like `.map()`. It is important to note that this `Iter<'a, T>` type only has a reference to `T`. This means that calling `v.iter()` will create a struct that _borrows_ from `v`. Use the `iter()` function if you want to iterate over the values by _reference_.
+Most examples I have found use `.iter()`. We can call `v.iter()` on something like a vector or slice. This creates an `Iter<'a, T>` type and it is this `Iter<'a, T>` type that implements the `Iterator` trait and allows us to call functions like `.map()`. It is important to note that this `Iter<'a, T>` type only has a reference to `T`. This means that calling `v.iter()` will create a struct that _borrows_ from `v`. Use the `iter()` function if you want to iterate over the values by _reference_.
 
 Let us write a simple map/reduce example:
 
@@ -33,7 +33,7 @@ fn main() {
 }
 ```
 
-In this example, we are using `.map()` and `.fold()` to count the number of bytes (not characters! Rust is UTF-8 by default) for all strings in the `names` vector. We [know][previous blog post] that the `len()` function can use an immutable reference. As such, we prefer `iter()` instead of `iter_mut()` or `into_iter()`. This allows us to _move_ the `names` vector later if we want. I put a bogus `use_names_for_something()` function in the example just to prove this. If we had used `into_iter()` instead, the compiler would have given us an _error: use of moved value: `names`_ response.
+In this example, we are using `.map()` and `.fold()` to count the number of bytes (not characters! Rust strings are UTF-8) for all strings in the `names` vector. We [know][previous blog post] that the `len()` function can use an immutable reference. As such, we prefer `iter()` instead of `iter_mut()` or `into_iter()`. This allows us to _move_ the `names` vector later if we want. I put a bogus `use_names_for_something()` function in the example just to prove this. If we had used `into_iter()` instead, the compiler would have given us an _error: use of moved value: `names`_ response.
 
 The closure used in `map()` does not require the `name` parameter to have a type, but I specified the type to show how it is being passed as a reference. Notice that the type of name is `&&str` and not `&str`. The string `"Jane"` is of type `&str`. The `iter()` function creates an iterator that has a _reference_ to each element in the `names` vector. Thus, we have a _reference_ to a _reference_ of a string slice. This can get a little unwieldy and I generally do not worry about the type. However, if we are destructuring the type, we do need to specify the reference:
 
@@ -54,7 +54,7 @@ fn main() {
 }
 ```
 
-In the above example, the compiler will complain that we are specifying the type `(_, _)` instead of `&(_, _)`. Changing the type to `&(player, _score)` will satisfy the compiler.
+In the above example, the compiler will complain that we are specifying the type `(_, _)` instead of `&(_, _)`. Changing the pattern to `&(player, _score)` will satisfy the compiler.
 
 Rust is immutable by default and iterators make it easy to manipulate data without needing mutability. If you do find yourself wanting to mutate some data, you can use the `iter_mut()` method to get a mutable reference to the values. Example use of `iter_mut()`:
 
@@ -102,7 +102,7 @@ fn main() {
 
 The `get_names` function is plucking out the name from a list of tuples. I chose `.into_iter()` here because we are transforming the tuple into a `String` type.
 
-The concept behind `.into_iter()` is similar to the [core::convert::Into][core::convert::Into] trait we discussed when accepting `&str` and `String` in a function. In fact, the [std::iter::Iterator][std::iter::Iterator] type implements [std::iter::IntoIterator][std::iter::IntoIterator] too. That means we can do something like `vec![1, 2, 3, 4].into_iter().into_iter().into_iter()`. In each call to `.into_iter()`, we are simply moving the vector into a new `IntoIter<T>` struct. This is an example of the [identity function][identity function]. I mention that only because I find it interesting to identify functional concepts that I see being used in the wild.
+The concept behind `.into_iter()` is similar to the [core::convert::Into][core::convert::Into] trait we discussed when accepting `&str` and `String` in a function. In fact, the [std::iter::Iterator][std::iter::Iterator] type implements [std::iter::IntoIterator][std::iter::IntoIterator] too. That means we can do something like `vec![1, 2, 3, 4].into_iter().into_iter().into_iter()`. In each subsequent call to `.into_iter()` just returns itself. This is an example of the [identity function][identity function]. I mention that only because I find it interesting to identify functional concepts that I see being used in the wild.
 
 ### How for Loops Actually Work
 
@@ -164,7 +164,7 @@ fn main() {
 }
 ```
 
-Exercise for the reader: _Why does `.iter()` not work in this example?_
+Exercise for the reader: _Why would `.iter()` not work in this example?_
 
 While this is valid, we want to give Rust every chance to optimize our code. What if we only wanted the first two names from that list?
 
