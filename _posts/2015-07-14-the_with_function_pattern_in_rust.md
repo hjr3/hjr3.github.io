@@ -48,7 +48,10 @@ fn main() {
 
 The newly allocated `MyType` is _moved_ from the callback into the `Slab#insert_with` scope. If the insert fails, then `Slab#insert_with` returns `None`. The newly allocated type is left within the `Slab::insert_with` function scope. Once `Slab#insert_with` returns, the newly allocated type will be automatically dropped. When an object is dropped, the destructor is called and any allocated memory will be freed.
 
+[edit: An explanation of drop semantics can be found [here][drop semantics].]
+
 The slab crate is an elegant little library that allocates a chunk of memory on the heap and stores values using a custom type for the index. It incorporates a lot of the core Rust concepts. I am learning a lot by studying the code.
 
 [slab]: https://github.com/carllerche/slab
 [Slab#insert_with]: https://github.com/carllerche/slab/blob/master/src/lib.rs#L142
+[drop semantics]: https://github.com/rust-lang/rfcs/blob/master/text/0320-nonzeroing-dynamic-drop.md#appendices
