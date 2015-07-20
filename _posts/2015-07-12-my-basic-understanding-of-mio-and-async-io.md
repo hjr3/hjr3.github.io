@@ -39,7 +39,7 @@ If you are curious as to why `Interest` was renamed to `EventSet`, you can read 
 
 #### Write Notifications
 
-One thing that confused me a lot was _when_ to use writable. A lot of the examples are just echoing back what the client sent them or they are performing some very simple task. In these cases, you do not need to register `EventSet::writable()` if you want to immediately write back to the socket you just read from. You can just perform the write as part of the current _readable_ event. If you are performing an expensive task between the read and write, you may want to handle this differently. Whether you are reading or writing from the socket, you also need to be aware that the kernel might block you.
+One thing that confused me a lot was _when_ to use writable. A lot of the examples are just echoing back what the client sent them or they are performing some very simple task. In these cases, you do not need to register `EventSet::writable()` if you want to immediately write back to the socket you just read from. You can just perform the write as part of the current _readable_ event. If you are performing an expensive task between the read and write, you may want to handle this differently. Whether you are reading or writing from the socket, you also need to be aware that the kernel might not be ready for your read or write.
 
 #### I Would Block You
 
