@@ -47,7 +47,7 @@ One thing that confused me a lot was _when_ to use writable. A lot of the exampl
 
 Even though we are using asynchronous IO, the kernel is not always ready for our reads and writes. When the kernel's internal send or receive buffers are full and it needs to flush them we will be asked to try again. Typically, the kernel communicates _try again_ to us in the form of an error. In Rust, we have `std::io::ErrorKind::WouldBlock`. In C, it is referred to as `EAGAIN`. This error is the kernel's way of letting us know it is not ready for our read or write and they we need to try again. This `WouldBlock` error _must_ be handled. In mio, we are provided with the traits, `TryRead` and `TryWrite`, which catch `WouldBlock` and treat it as a 0 byte read. These traits are convenient to use as our error handling can now assume any `Err(_)` is an unexpected error. More about this when we get to some code samples.
 
-You might be wondering what it means to _try again_ when the kernel is blocking our read or write. In order to understand this, we need to understand the polling options.
+You might be wondering what it means to _try again_ when the kernel is not ready for our read or write. In order to understand this, we need to understand the polling options.
 
 ### Poll Options
 
@@ -59,7 +59,7 @@ We can also combine edge-triggered polling with another option: `PollOpt::onesho
 
 #### Trying Again
 
-Now that we are familiar with what events we can be notified of and what our polling options are, we need to revisit the notion of trying our read or write again when the kernel _would block_ us. Using edge-triggering, a read or write event means our connection will be deregistered from the event loop. To try again, we need to first save our work and then reregister our connection with the event loop, using our token, so we can be notified after the kernel is done flushing.
+Now that we are familiar with what events we can be notified of and what our polling options are, we need to revisit the notion of trying our read or write again when the kernel not ready for us. Using edge-triggering, a read or write event means our connection will be deregistered from the event loop. To try again, we need to first save our work and then reregister our connection with the event loop, using our token, so we can be notified after the kernel is done flushing.
 
 ## Next Steps
 
