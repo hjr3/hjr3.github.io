@@ -43,7 +43,9 @@ One thing that confused me a lot was _when_ to use writable. A lot of the exampl
 
 #### I Would Block You
 
-Even though we are using asynchronous IO, the kernel does block our reads and writes. Blocking happens when the kernel's internal send and receive buffers are full and it needs to flush them. Typically, this blocking is communicated to us in the form of an error. In Rust, we have `std::io::ErrorKind::WouldBlock`. In C, it is referred to as `EAGAIN`. This error is the kernel's way of letting us know it is blocking our read or write and they we need to try again. This `WouldBlock` error _must_ be handled. In mio, we are provided with the traits, `TryRead` and `TryWrite`, which catch `WouldBlock` and treat it as a 0 byte read. These traits are convenient to use as our error handling can now assume any `Err(_)` is an unexpected error. More about this when we get to some code samples.
+[edit: I updated this section to replace the word _block_ with more correct language like _reject_ and _not ready_.]
+
+Even though we are using asynchronous IO, the kernel is not always ready for our reads and writes. When the kernel's internal send or receive buffers are full and it needs to flush them we will be asked to try again. Typically, the kernel communicates _try again_ to us in the form of an error. In Rust, we have `std::io::ErrorKind::WouldBlock`. In C, it is referred to as `EAGAIN`. This error is the kernel's way of letting us know it is not ready for our read or write and they we need to try again. This `WouldBlock` error _must_ be handled. In mio, we are provided with the traits, `TryRead` and `TryWrite`, which catch `WouldBlock` and treat it as a 0 byte read. These traits are convenient to use as our error handling can now assume any `Err(_)` is an unexpected error. More about this when we get to some code samples.
 
 You might be wondering what it means to _try again_ when the kernel is blocking our read or write. In order to understand this, we need to understand the polling options.
 
