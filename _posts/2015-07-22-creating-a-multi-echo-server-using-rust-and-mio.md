@@ -8,7 +8,7 @@ type: post
 published: true
 ---
 
-This is my second blog post in a series about async IO. You may want to read [first blog post][first blog post] if you are not familar with epoll/kqueue implementations.
+This is my second blog post in a series about async IO. You may want to read [first blog post][first blog post] if you are not familar with mio or epoll/kqueue implementations.
 
 ## Basic Setup
 
