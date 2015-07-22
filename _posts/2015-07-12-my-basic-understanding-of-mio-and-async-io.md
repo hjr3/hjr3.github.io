@@ -63,7 +63,7 @@ Now that we are familiar with what events we can be notified of and what our pol
 
 ## Next Steps
 
-We now have the necessary context to start using mio. It took days for these concepts to really sink in with me. If you grok this already, you are awesome. If not, give it time! I am going to apply these above concepts to actual code in my next post. If you want to get started before my next post, I would start with [test echo server][test echo server] that is part of the mio test suite. There is also the [getting started][mio getting started] documentation that mio provides, though it is somewhat out of date for the `0.4.x` branch.
+We now have the necessary context to start using mio. It took days for these concepts to really sink in with me. If you grok this already, you are awesome. If not, give it time! I am going to apply these above concepts to actual code in my [next post][next post]. If you want to get started before my next post, I would start with [test echo server][test echo server] that is part of the mio test suite. There is also the [getting started][mio getting started] documentation that mio provides, though it is somewhat out of date for the `0.4.x` branch.
 
 There are also a few projects that are abstracting a lot of the details needed to get mio working. These can be great example to learn from. The two I have looked at are:
 
@@ -87,6 +87,7 @@ In addition to reading the mio soure code and example code, I did a lot of readi
 [discussion]: https://github.com/carllerche/mio/issues/184
 [tuple struct]: https://doc.rust-lang.org/nightly/book/structs.html#tuple-structs
 [mio getting started]: https://github.com/carllerche/mio/blob/docs/doc/getting-started.md
+[next post]: /2015/07/22/creating-a-multi-echo-server-using-rust-and-mio.html
 [test echo server]: https://github.com/carllerche/mio/blob/master/test/test_echo_server.rs
 [Reactor]: https://github.com/rrichardson/reactor
 [mioco]: https://github.com/dpc/mioco
