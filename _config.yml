@@ -20,6 +20,10 @@ blog: "<a href='/'>blog</a>"
 feed: "<a href='/atom.xml'>atom feed</a>"
 projects:
  -
+  name: mob
+  link: https://github.com/hjr3/mob
+  description: "A multi-echo server built on mio."
+ -
   name: hal-rs
   link: https://github.com/hjr3/hal-rs
   description: "A pure rust library for generating Hal responses."
