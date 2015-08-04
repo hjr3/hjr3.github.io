@@ -22,14 +22,14 @@ If the `which` command finds something like `/usr/local/bin/phpize`, you are in 
 
 ## Compiling The Extension
 
-To build the Rust library:
+Our [Rust library][Rust library] exposes a single function named `ext_score`. It takes two parameters of `*const char` and returns a 64-bit floating point type (or a double). To build the Rust library:
 
 ```
 $ cd rust
 $ cargo build
 ```
 
-To build the PHP extension:
+Our [PHP extension][PHP extension] defines a single function named `score` that will glue PHP userland to our `ext_score` Rust function. To build the PHP extension:
 
 ```
 $ cd php-ext
@@ -234,6 +234,8 @@ If you are really serious about building PHP extensions, I suggest purchasing Sa
 
 [working example]: https://github.com/hjr3/rust-php-ext
 [Rust selecta port]: https://github.com/hjr3/selecta/tree/php-ext
+[Rust library]: https://github.com/hjr3/rust-php-ext/blob/master/rust/src/lib.rs
+[PHP extension]: https://github.com/hjr3/rust-php-ext/blob/master/php-ext/score.c
 [ext_skel]: https://github.com/php/php-src/blob/master/ext/ext_skel
 [I did]: https://github.com/hjr3/selecta/commit/b48de0ae95618447a5d237bf48e2dbd8ac45e203#diff-ec28c2fa28e17d40dbe2bee40768b51fR7
 [score.c]: https://github.com/hjr3/rust-php-ext/blob/master/php-ext/score.c
