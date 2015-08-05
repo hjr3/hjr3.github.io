@@ -173,7 +173,7 @@ extern zend_module_entry score_module_entry;
 #define phpext_score_ptr &score_module_entry
 
 // Define our Rust foreign function interface (ffi) here
-extern double ext_score(char *, char *);
+extern double ext_score(unsigned char *, unsigned int, char *, unsigned int);
 
 #endif
 ```
@@ -196,20 +196,7 @@ PHP_FUNCTION(score)
         return;
     }
 
-    // PHP does not terminate strings with a nul byte.
-
-    char *choice_c_str = emalloc(choice_len + 1);
-    strncpy(choice_c_str, choice, choice_len);
-    choice_c_str[choice_len] = '\0';
-
-    char *query_c_str = emalloc(query_len + 1);
-    strncpy(query_c_str, query, query_len);
-    query_c_str[query_len] = '\0';
-
-    double s = ext_score(choice_c_str, query_c_str);
-
-    efree(choice_c_str);
-    efree(query_c_str);
+    double s = ext_score(choice, choice_len, query, query_len);
 
     RETURN_DOUBLE(s);
 }
@@ -219,9 +206,7 @@ We declare new PHP functions using the `PHP_FUNCTION` macro and pass it the name
 
 We are using the `zend_parse_parameters` function to parse the paramters being specified in our userland function. In this case, we are expecting two strings. If this function looks a little gnarly, well that is because it is. I will provide some links at the end that explain how this function works in more detail. Suffice to say, we get back two non-nul terminated `char *` values and their corresponding lengths as `int`s.
 
-Now, Rust FFI expects nul terminated strings. If we pass these strings as is, then Rust will segfault when it tries to turn them into a `CStr` object. We have to allocate some new memory to create nul terimated versions of these strings. In PHP, we use emalloc to allocate new memory.
-
-One the memory is allocated, we can pass the strings into our `ext_score` function and get a result back. We free up the memory we allocated and then return that value to userland PHP. We now have a working end-to-end PHP extension to a Rust library.
+We can pass the strings into our `ext_score` function, get a result back and then return that value to userland PHP. We now have a working end-to-end PHP extension to a Rust library.
 
 ## Further Reading
 
