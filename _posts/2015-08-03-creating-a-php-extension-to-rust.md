@@ -227,3 +227,4 @@ If you are really serious about building PHP extensions, I suggest purchasing Sa
 [devzone 1]: http://devzone.zend.com/303/extension-writing-part-i-introduction-to-php-and-zend/
 [devzone 2]: http://devzone.zend.com/317/extension-writing-part-ii-parameters-arrays-and-zvals/
 [Extending and Embedding PHP]: http://www.amazon.com/Extending-Embedding-PHP-Sara-Golemon/dp/067232704X
+[gearman]: http://gearman.org/
