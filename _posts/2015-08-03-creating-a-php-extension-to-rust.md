@@ -155,7 +155,7 @@ You will need to make changes to the `config.m4` to get your specific extension 
 
 Here is the standard PHP header file for an extension. The convention is to use `php_[extension-name].h` as the name. In our case, `php_score.h`.
 
-```
+```c
 #ifndef PHP_SCORE_H
 
 #define PHP_SCORE_H
@@ -178,7 +178,7 @@ extern double ext_score(unsigned char *, unsigned int, char *, unsigned int);
 #endif
 ```
 
-You can copy/paste most of this and replace `SCORE` and `score` with the name of your extension. I chose to define the score libraries functins here. We are telling the compiler that something external to our code is defining a function named `ext_score`. This allows our code to compile successfully when we go to use this Rust function. Make sure you list all the functions your Rust library is exposing.
+You can copy/paste most of this and replace `SCORE` and `score` with the name of your extension. I chose to define the score libraries functions here. We are telling the compiler that something external to our code is defining a function named `ext_score`. This allows our code to compile successfully when we go to use this Rust function. Make sure you list all the functions your Rust library is exposing.
 
 ## Extension Source Code
 
@@ -227,3 +227,4 @@ If you are really serious about building PHP extensions, I suggest purchasing Sa
 [devzone 1]: http://devzone.zend.com/303/extension-writing-part-i-introduction-to-php-and-zend/
 [devzone 2]: http://devzone.zend.com/317/extension-writing-part-ii-parameters-arrays-and-zvals/
 [Extending and Embedding PHP]: http://www.amazon.com/Extending-Embedding-PHP-Sara-Golemon/dp/067232704X
+[gearman]: http://gearman.org/
