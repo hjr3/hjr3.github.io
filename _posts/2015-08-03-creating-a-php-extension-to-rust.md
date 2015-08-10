@@ -178,7 +178,7 @@ extern double ext_score(unsigned char *, unsigned int, char *, unsigned int);
 #endif
 ```
 
-You can copy/paste most of this and replace `SCORE` and `score` with the name of your extension. I chose to define the score libraries functins here. We are telling the compiler that something external to our code is defining a function named `ext_score`. This allows our code to compile successfully when we go to use this Rust function. Make sure you list all the functions your Rust library is exposing.
+You can copy/paste most of this and replace `SCORE` and `score` with the name of your extension. I chose to define the score libraries functions here. We are telling the compiler that something external to our code is defining a function named `ext_score`. This allows our code to compile successfully when we go to use this Rust function. Make sure you list all the functions your Rust library is exposing.
 
 ## Extension Source Code
 
