@@ -155,7 +155,7 @@ You will need to make changes to the `config.m4` to get your specific extension 
 
 Here is the standard PHP header file for an extension. The convention is to use `php_[extension-name].h` as the name. In our case, `php_score.h`.
 
-```
+```c
 #ifndef PHP_SCORE_H
 
 #define PHP_SCORE_H
