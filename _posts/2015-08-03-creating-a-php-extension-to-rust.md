@@ -12,6 +12,8 @@ I am going to walk through the creation of a PHP extension that works with a Rus
 
 ## Before Getting Started
 
+note: I created a [docker container][docker container] that will set environment up.
+
 You are going to need a development version of PHP. You can test if you have it by running:
 
 ```
@@ -219,6 +221,7 @@ If you are really serious about building PHP extensions, I suggest purchasing Sa
 
 [working example]: https://github.com/hjr3/rust-php-ext
 [Rust selecta port]: https://github.com/hjr3/selecta/tree/php-ext
+[docker container]: https://hub.docker.com/r/hjr3/rust-php-ext/
 [Rust library]: https://github.com/hjr3/rust-php-ext/blob/master/rust/src/lib.rs
 [PHP extension]: https://github.com/hjr3/rust-php-ext/blob/master/php-ext/score.c
 [ext_skel]: https://github.com/php/php-src/blob/master/ext/ext_skel
