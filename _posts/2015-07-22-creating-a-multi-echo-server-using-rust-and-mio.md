@@ -247,7 +247,7 @@ The result of the read is pushed into all the existing connections write queue b
 
 I am just getting into async io and mio, so my implementation may not be ideal, but it works. We have a functioning multi-echo server that is resistant to errors. The source also contains a simple client that will repeatedly write a message to the server and then read a message.
 
-One thing that this code does not do well is handle reads from a client. In order to do that well, we need to establish a simple _protocol_. I am working through that now and will go over that in my next post.
+One thing that this code does not do well is handle reads from a client. In order to do that well, we need to establish a simple _protocol_. I am working through that now and will go over that in my [next post][protocol-blog-post].
 
 [first blog post]: /2015/07/12/my-basic-understanding-of-mio-and-async-io.html
 [complete working example]: https://github.com/hjr3/mob/blob/multi-echo-blog-post/src/main.rs
@@ -256,3 +256,4 @@ One thing that this code does not do well is handle reads from a client. In orde
 [bytes crate]: https://crates.io/crates/bytes
 [some mio source code]: https://github.com/carllerche/mio/blob/eed4855c627892b88f7ca68d3283cbc708a1c2b3/src/io.rs#L23-27
 [StackOverflow question]: http://stackoverflow.com/questions/3017633/difference-between-message-oriented-protocols-and-stream-oriented-protocols
+[protocol-blog-post]: /2015/09/12/creating-a-simple-protocol-when-using-rust-and-mio.html
