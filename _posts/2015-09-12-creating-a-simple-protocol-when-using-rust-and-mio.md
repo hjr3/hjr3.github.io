@@ -3,6 +3,7 @@ layout: post
 title: "Creating A Simple Protocol When Using Rust and mio"
 tags:
 - rustlang
+- mio
 status: publish
 type: post
 published: true
