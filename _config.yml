@@ -7,18 +7,24 @@ redcarpet:
 gems:
   - jekyll-sitemap
 
-exclude: [Vagrantfile]
+exclude: [Vagrantfile, vendor]
 
 paginate: 5
 
 title: Herman J. Radtke III Blog
+name: Herman J. Radtke III Blog
 url: http://hermanradtke.com
 author:
  name: Herman J. Radtke III
  email: herman@hermanradtke.com
+
 baseurl: /
+
 blog: "<a href='/'>blog</a>"
-feed: "<a href='/atom.xml'>atom feed</a>"
+
+feed:
+  path: atom.xml
+
 projects:
  -
   name: mob
@@ -32,3 +38,6 @@ projects:
   name: hal-rs-demo
   link: https://github.com/hjr3/hal-rs-demo
   description: "A demo web server for the hal-rs library."
+
+gems:
+  - jekyll-feed
