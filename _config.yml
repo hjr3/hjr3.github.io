@@ -41,3 +41,4 @@ projects:
 
 gems:
   - jekyll-feed
+  - jekyll-sitemap
