@@ -16,7 +16,7 @@
         <div class="col-md-8 col-md-offset-2">
 	  <header>
             <h1>{{ site.author.name }}</h1>
-	    <p>Read more of my {{ site.blog }} or subscribe to my {{ site.feed }}.</p>
+	    <p>Read more of my <a href='/'>blog</a> or subscribe to my <a href='/atom.xml'>feed</a>.</p>
 	  </header>
 
           <hr/>
@@ -26,9 +26,9 @@
               <h1 class="title">{{ page.title }}</h1>
               <p class="text-muted">Written by {{ site.author.name }} on {{ page.date | date_to_string }}</p>
 	    </header>
-	    
+
 	    {{ content }}
-	    
+
 	  </article>
 
           <hr/>

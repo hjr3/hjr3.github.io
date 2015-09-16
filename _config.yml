@@ -19,6 +19,7 @@ author:
  email: herman@hermanradtke.com
 
 blog: "<a href='/'>blog</a>"
+atom_feed: "<a href='/'>blog</a>"
 
 feed:
   path: atom.xml
