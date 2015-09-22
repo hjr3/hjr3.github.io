@@ -61,7 +61,7 @@ Our function now checks to see if the given `input` contains a space and only th
 
 The beauty of `Cow` is that it implements the `Deref` trait so you can call immutable functions without knowing whether or not the result is a new string buffer or not. Example:
 
-```
+```rust
 let s = remove_spaces("Herman Radtke");
 println!("Length of string is {}", s.len());
 ```
@@ -71,7 +71,7 @@ If I do need to mutate `s`, then I can convert it into an _owned_ variable using
 
 Example where a `Cow::Borrowed` is mutated:
 
-```
+```rust
 let s = remove_spaces("Herman"); // s is a Cow::Borrowed variant
 let len = s.len(); // immutable function call using Deref
 let owned: String = s.into_owned(); // memory is allocated for a new string
@@ -79,7 +79,7 @@ let owned: String = s.into_owned(); // memory is allocated for a new string
 
 Example where a `Cow::Owned` is mutated:
 
-```
+```rust
 let s = remove_spaces("Herman Radtke"); // s is a Cow::Owned variant
 let len = s.len(); // immutable function call using Deref
 let owned: String = s.into_owned(); // no new memory allocated as we already had a String
