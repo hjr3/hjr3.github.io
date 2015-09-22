@@ -117,14 +117,14 @@ We can also clean this up a bit using just iterators:
 ```rust
 fn remove_spaces<'a>(input: &'a str) -> Cow<'a, str> {
     if input.contains(' ') {
-        return input
-            .chars()
-            .filter(|&x| x != ' ')
-            .collect::<std::string::String>()
-            .into();
+        input
+        .chars()
+        .filter(|&x| x != ' ')
+        .collect::<std::string::String>()
+        .into()
+    } else {
+        input.into()
     }
-
-    input.into()
 }
 ```
 
