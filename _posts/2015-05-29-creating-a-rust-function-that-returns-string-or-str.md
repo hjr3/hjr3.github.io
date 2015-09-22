@@ -43,13 +43,13 @@ use std::borrow::Cow;
 fn remove_spaces<'a>(input: &'a str) -> Cow<'a, str> {
     if input.contains(' ') {
         let mut buf = String::with_capacity(input.len());
-        
+
         for c in input.chars() {
             if c != ' ' {
                 buf.push(c);
             }
         }
-        
+
         return Cow::Owned(buf);
     }
 
@@ -70,6 +70,7 @@ If I do need to mutate `s`, then I can convert it into an _owned_ variable using
 
 
 Example where a `Cow::Borrowed` is mutated:
+
 ```
 let s = remove_spaces("Herman"); // s is a Cow::Borrowed variant
 let len = s.len(); // immutable function call using Deref
@@ -77,6 +78,7 @@ let owned: String = s.into_owned(); // memory is allocated for a new string
 ```
 
 Example where a `Cow::Owned` is mutated:
+
 ```
 let s = remove_spaces("Herman Radtke"); // s is a Cow::Owned variant
 let len = s.len(); // immutable function call using Deref
@@ -97,13 +99,13 @@ fn remove_spaces<'a>(input: &'a str) -> Cow<'a, str> {
     if input.contains(' ') {
         let mut buf = String::with_capacity(input.len());
         let v: Vec<char> = input.chars().collect();
-        
+
         for c in v {
             if c != ' ' {
                 buf.push(c);
             }
         }
-        
+
         return buf.into();
     }
     return word.into();
