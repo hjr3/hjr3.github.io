@@ -34,7 +34,7 @@ A few things to point out. The curl crate allows the functions to be chained tog
 
 The C interface would normally require us to explicitly close the handle, but Rust does this automatically for us. In Rust, we also need to unwrap the `Result<Response, ErrCode>` returned by the call to `exec()`. Rather than just use `unwrap()`, we can use `unwrap_or_else()` and generate a more user-friendly error message. I will be using `unwrap_or_else()` throughout this example.
 
-Now that we have a response, we need to parse the json. Again, there are a number of crates we can use for this task. Let us choose [serde_json][serde_json crate] as that looks to be the successor to [rustc_serialize][rustc_serialize crate]. Before we start parsing json, we need to get at the response body. In curl, `resp.get_body()` will return a reference to a slice of unsigned 8 byte intgers `&[u8]`. We need to turn those bytes into a [unicode string slice][std::str].
+Now that we have a response, we need to parse the json. Again, there are a number of crates we can use for this task. Let us choose [serde_json][serde_json crate] as that looks to be the successor to [rustc_serialize][rustc_serialize crate]. Before we start parsing json, we need to get at the response body. In curl, `resp.get_body()` will return a reference to a slice of unsigned 8 bit intgers `&[u8]`. We need to turn those bytes into a [unicode string slice][std::str].
 
 ```rust
 let body = std::str::from_utf8(resp.get_body()).unwrap_or_else(|e| {
