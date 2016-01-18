@@ -29,6 +29,14 @@ title: Talks
    * LAPHP: The Los Angeles PHP Developers Group - June, 2015
    * The Los Angeles Ruby/Rails Meetup Group - June, 2015
 
+## Panel: Capitalizing on Both HTML5 and Native Apps to Deliver Cost Effective Content
+
+**Panel focus:** _Mobile in 2013 has been a year of trial and error, testing and learning. Everyone is at different stages of their mobile ‘journey’. Lets start by asking- what are the fundamentals of a ‘good’ HTML5/app strategy, based on your experience so far? Who are we catering to? Is a no brainer to have an app? The panels next main focus can be how the audience can blend both HTML5 and apps into their mobile strategy, based on what is right for them. How did you find the sweet spot? What worked for HSN? What worked for Hautelook? How can some of those best practices be actually used by the audience? Lets talk more about pros and cons of each. It would be great to have a debate too around the ‘hybrid’ concept. It seemed to work for HSN, but not for Hautelook? Why/why not? Another good focus can be Phonegap and some of the less expensive methods of implementing strategy. What are the best options available? What worked well when working with solution providers and other internal teams? We can wrap up by discussing where we are in terms of where we see value for the future. What are the challenges ahead? How is responsive design changing the playing field? Where are the opportunities? How can we each take mobile to the next level?_
+
+**Presented at:**
+
+   * Mobile Shopping Conference - April, 2013
+
 ## Ember.js Build Processes
 
 **Abstract:** _A brief introduction to the tools available to build Ember.js applications. I also walk through how to use travis-CI and Amazon S3 to automatically build, test and deploy an Ember.js application._
