@@ -7,6 +7,28 @@ title: Talks
 
 # {{ page.title }}
 
+## Rust: Systems Programming for Web Developers
+
+**Abstract:** _The modern web stack is made up of a dozen different systems, but too few people know how to create and support them. I believe this is because systems programming has historically had too many barriers to entry, such as memory safety and the trading of expressiveness for performance. Let us explore some of the ways Rust breaks down these barriers and can make systems programming feel much more approachable to web developers._
+
+**Link to slides:** [Google Doc Presentation](https://docs.google.com/presentation/d/1jfyzgeVrwDbN6MgVPpIIj7NHFMHoQ4HuqxbNhIWUqUg/edit?usp=sharing)
+
+**Link to video:** [YouTube](https://www.youtube.com/watch?v=1MRY6s7vm-0&feature=youtu.be&t=1h36m30s)
+
+**Presented at:**
+
+   * SCALE 14x - January, 2016</li>
+
+## Anatomy of a PHP Request
+
+**Abstract:** _Come along on an adventure as we follow a request all the way through the web stack. You will catch a glimpse of the different startup and shutdown modes of PHP, figure out what the difference between mod_php and fpm are and learn other interesting tidbits of information as a request goes through its journey of being served._
+
+**Link to slides:** [Google Doc Presentation](https://docs.google.com/presentation/d/1F8SZlAzM0ZZLgIDk8B7WInMxSqLsXXRH9VyPfEGL_ZU/edit?usp=sharing)
+
+**Presented at:**
+
+   * SCALE 14x - January, 2016</li>
+
 ## Rust Lifetimes
 
 **Abstract:** _A complete walkthrough of lifetimes in Rust. This talk will take us from the basics of how lifetimes work, discuss why we may need to be explicit about them and end talking about advanced topics, such as higher-ranked lifetimes._
@@ -17,7 +39,7 @@ title: Talks
 
    * Los Angeles Rust Meetup - October, 2015</li>
 
-## Systems Programming for Web Developers
+## Rust: Systems Programming for Web Developers
 
 **Abstract:** _This a call to action for web developers to get involved in systems programming. The modern web stack is getting more complex, but too few people know how to create and support the essential elements of that stack. I believe this is because systems programming has historically had too many barriers to entry. Modern systems languages, like Rust, are breaking down these barriers. Ever wanted to write a toy shell or create your own version of memcache? Rust makes systems programming feel much more approachable to web developers._
 
