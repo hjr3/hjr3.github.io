@@ -8,6 +8,12 @@ type: post
 published: true
 ---
 
+<link rel="alternate" href="http://habrahabr.ru/post/274565/" hreflang="ru" />
+<link rel="alternate" href="{{ site.url }}{{ page.url }}" hreflang="en" />
+<link rel="alternate" href="{{ site.url }}{{ page.url }}" hreflang="x-default" />
+
+<a href="http://habrahabr.ru/post/274565/">Russian Translation</a>
+
 We learned how to [create a function that accepts String or &str][Into<String>] as an argument. Now I want to show you how to create a function that returns either `String` or `&str`. I also want to discuss why we would want to do this. To start, let us write a function to remove all the spaces from a given string. Our function might look something like this:
 
 ```rust

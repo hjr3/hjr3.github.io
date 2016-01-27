@@ -8,6 +8,12 @@ type: post
 published: true
 ---
 
+<link rel="alternate" href="http://habrahabr.ru/post/274585/" hreflang="ru" />
+<link rel="alternate" href="{{ site.url }}{{ page.url }}" hreflang="en" />
+<link rel="alternate" href="{{ site.url }}{{ page.url }}" hreflang="x-default" />
+
+<a href="http://habrahabr.ru/post/274585/">Russian Translation</a>
+
 For all the people frustrated by having to use `to_string()` to get programs to compile this post is for you. For those not quite understanding why Rust has two string types `String` and `&str`, I hope to shed a little light on the matter.
 
 ## Functions That Accept A String

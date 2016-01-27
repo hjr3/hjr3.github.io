@@ -8,6 +8,12 @@ type: post
 published: true
 ---
 
+<link rel="alternate" href="http://habrahabr.ru/post/274455/" hreflang="ru" />
+<link rel="alternate" href="{{ site.url }}{{ page.url }}" hreflang="en" />
+<link rel="alternate" href="{{ site.url }}{{ page.url }}" hreflang="x-default" />
+
+<a href="http://habrahabr.ru/post/274455/">Russian Translation</a>
+
 In my [last post][last post] we talked a lot about using `&str` as the preferred type for functions accepting a string argument. Towards the end of that post there was some discussion about when to use `String` vs `&str` in a `struct`. I think this advice is good, but there are cases where using `&str` instead of `String` is not optimal. We need another strategy for these use cases.
 
 ## A struct Containing Strings
