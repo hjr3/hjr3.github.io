@@ -14,7 +14,7 @@ Here is a high level of example of how to make a HTTP GET request to some URL. T
 
 There are a number of crates we could use to make an HTTP GET request, but I am partial to [curl][curl crate]. The curl library should be familiar to a wide set of audiences and libcurl is rock solid. Also, I think the Rust interface to curl is really easy to read and use. I am going to request the [HauteLook][HauteLook] API root because that is where I work and it will return [Hal][Hal] json.
 
-```
+```rust
 use curl::http;
 
 let url = "https://www.hautelook.com/api";
