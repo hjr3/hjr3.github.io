@@ -17,7 +17,7 @@ title: Talks
 
 **Presented at:**
 
-   * SCALE 14x - January, 2016</li>
+   * SCALE 14x - January, 2016
 
 ## Anatomy of a PHP Request
 
@@ -27,7 +27,7 @@ title: Talks
 
 **Presented at:**
 
-   * SCALE 14x - January, 2016</li>
+   * SCALE 14x - January, 2016
 
 ## Rust Lifetimes
 
@@ -37,7 +37,7 @@ title: Talks
 
 **Presented at:**
 
-   * Los Angeles Rust Meetup - October, 2015</li>
+   * Los Angeles Rust Meetup - October, 2015
 
 ## Rust: Systems Programming for Web Developers
 
