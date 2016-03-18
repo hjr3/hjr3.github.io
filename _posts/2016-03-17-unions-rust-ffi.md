@@ -8,6 +8,8 @@ type: post
 published: true
 ---
 
+Edit: Added a [warning](#warning) at the bottom based on feedback from [Joe Groff](https://twitter.com/jckarter/status/710875695539310592).
+
 Note: This post assumes the reader is familiar with [Rust FFI](https://doc.rust-lang.org/book/ffi.html), [endianess](https://en.wikipedia.org/wiki/Endianness) and [ioctl](https://en.wikipedia.org/wiki/Ioctl).
 
 When building a foreign function interface to C code, we will inevitably run into a struct that has a union. Rust has no built-in support for unions, so we must come up with a strategy on our own. A union is a type in C that stores different data types in the same memory location. There are a number of reasons why someone may want to choose a union, including: converting between binary representations of integers and floats, implementing pseudo-polymorphism and direct access to bits. I am going to focus on the pseudo-polymorphism case.
@@ -139,6 +141,7 @@ impl IfReqUnion {
 We implement methods for each of the various types that make up the union. Now that our type conversions are handled by `IfReqUnion`, we can now implement the methods on `IfReq` like this:
 
 ```rust
+#[repr(C)]
 pub struct IfReq {
     ifr_name: [c_char; IFNAMESIZE],
     union: IfReqUnion,
@@ -174,3 +177,30 @@ impl IfReq {
 We ended up with two structs. We have `IfReq` that represents the memory layout of the C struct `ifreq`. We will implement a method on `IfReq` for each type of `ioctl` request. We also have the `IfRequnion` struct that handles the various types the `ifr_ifru` union might be. We will create a method to for each type we need to handle. This is less work than creating a specialized struct for each type in the union and provides a better interface than doing the type conversion in `IfReq`.
 
 Here is a more complete working [example](https://github.com/hjr3/carp-rs/blob/5d56a62b1a698949a7252db637d3fbeadbb62e3b/src/mac.rs). This is still a bit of a work in progress, but the tests pass and the code incorporates the above concepts discussed.
+
+## Warning
+
+The above approach is not without problems. In the case of `ifreq`, we were fortunate that `ifr_name` was 16 bytes and was aligned on a word boundary. If `ifr_name` was not aligned to a 4 byte word boundary, then we will run into a problem. Our `union` type is `[u8; 24]` which has an alignment of a single byte. This is not the same alignment as a type of size 24 bytes. Here is a short example to illustrate this point. If we have a C struct with the following union:
+
+```C
+struct foo {
+    short x;
+    union {
+        int;
+    } y;
+}
+```
+
+The above `foo` struct has a size of 8 bytes. Two bytes for `x`, two more bytes for padding and four bytes for `y`. If we tried to write this in Rust:
+
+```rust
+#[repr(C)]
+pub struct Foo {
+    x: u16,
+    y: [u8; 4],
+}
+```
+
+The above `Foo` struct is only 6 bytes. Two bytes for x and then we can fit the first two `u8` elements of `y` in the same 4 byte _word_ as `x`. This subtle difference may cause problems when being passed to a C function that is expecting a struct of 8 bytes.
+
+Until Rust natively supports unions, this sort of FFI is difficult to get right. Good luck, but be careful!
