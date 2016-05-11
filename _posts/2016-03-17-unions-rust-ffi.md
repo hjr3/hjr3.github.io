@@ -8,11 +8,12 @@ type: post
 published: true
 ---
 
+
+When building a foreign function interface to C code, we will inevitably run into a struct that has a union. Rust has no built-in support for unions, so we must come up with a strategy on our own. A union is a type in C that stores different data types in the same memory location. There are a number of reasons why someone may want to choose a union, including: converting between binary representations of integers and floats, implementing pseudo-polymorphism and direct access to bits. I am going to focus on the pseudo-polymorphism case.
+
 Edit: Added a [warning](#warning) at the bottom based on feedback from [Joe Groff](https://twitter.com/jckarter/status/710875695539310592).
 
 Note: This post assumes the reader is familiar with [Rust FFI](https://doc.rust-lang.org/book/ffi.html), [endianess](https://en.wikipedia.org/wiki/Endianness) and [ioctl](https://en.wikipedia.org/wiki/Ioctl).
-
-When building a foreign function interface to C code, we will inevitably run into a struct that has a union. Rust has no built-in support for unions, so we must come up with a strategy on our own. A union is a type in C that stores different data types in the same memory location. There are a number of reasons why someone may want to choose a union, including: converting between binary representations of integers and floats, implementing pseudo-polymorphism and direct access to bits. I am going to focus on the pseudo-polymorphism case.
 
 As an example, let us get the MAC address based on an interface name. We can summarize the steps to get the MAC address as follows:
 
