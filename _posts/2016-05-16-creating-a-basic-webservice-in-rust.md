@@ -56,7 +56,7 @@ $ cargo build
 Compiling demo v0.1.0 (file:///Users/herman/projects/demo)
 ```
 
-Now we need to add the [nickel](https://crates.io/crates/nickel) web framework so we can accept HTTP requests and deliver responses. We can be a little less conservative than crates.io when specifying my dependencies. None of these crates are 1.0 yet, but they are being developed and maintained. We do not want to wildcard (`"*"`) the entire version number for each dependency as that will leave our webservice suscepitble to backwards compatibility breaks in the future. Leaving the _patch version_ a wildcard will allow us to update the libraries when they have bug fixes in the future without risking a major backwards compatibility break.
+Now we need to add the [nickel](https://crates.io/crates/nickel) web framework so we can accept HTTP requests and deliver responses. We can be a little less conservative than crates.io when specifying my dependencies. None of these crates are 1.0 yet, but they are being developed and maintained. We do not want to wildcard (`"*"`) the entire version number for each dependency as that will leave our webservice suscepitble to backwards compatibility breaks in the future. Leaving the _patch version_ a wildcard will allow us to update the libraries when they have bug fixes in the future without risking a major backwards compatibility break. **Edit: As was explained to me, cargo will update to the latest compatible version (in accordance with SemVer) by default. So `0.8.1`, `0.8.*` and `^0.8.1` all mean the same thing. The standard convention is to specify the version shown to you on crates.io. I have updated the below `Cargo.toml` example.**
 
 ```
 $ cat Cargo.toml
@@ -66,7 +66,7 @@ version = "0.1.0"
 authors = ["Your Name <yourname@example.com>"]
 
 [dependencies]
-nickel = "0.8.*"
+nickel = "0.8.1"
 $ cargo build
    Updating registry `https://github.com/rust-lang/crates.io-index`
    Compiling regex-syntax v0.3.1
