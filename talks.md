@@ -11,13 +11,13 @@ title: Talks
 
 **Abstract:** _The modern web stack is made up of a dozen different systems, but too few people know how to create and support them. I believe this is because systems programming has historically had too many barriers to entry, such as memory safety and the trading of expressiveness for performance. Let us explore some of the ways Rust breaks down these barriers and can make systems programming feel much more approachable to web developers._
 
-**Link to slides:** [Google Doc Presentation](https://docs.google.com/presentation/d/1jfyzgeVrwDbN6MgVPpIIj7NHFMHoQ4HuqxbNhIWUqUg/edit?usp=sharing)
-
-**Link to video:** [YouTube](https://www.youtube.com/watch?v=1MRY6s7vm-0&feature=youtu.be&t=1h36m30s)
-
 **Presented at:**
 
    * SCALE 14x - January, 2016
+      * Link to slides: [Google Doc Presentation](https://docs.google.com/presentation/d/1jfyzgeVrwDbN6MgVPpIIj7NHFMHoQ4HuqxbNhIWUqUg/edit?usp=sharing)
+      * Link to video: [YouTube](https://www.youtube.com/watch?v=1MRY6s7vm-0&feature=youtu.be&t=1h36m30s)
+   * Github CodeConf LA - June, 2016
+      * Link to slides: [Google Doc Presentation](https://docs.google.com/presentation/d/1-dp0pwvo3r1T8KyEPPC8wkuCLGL7CdbvlKj4Mjzx7m0/edit?usp=sharing)
 
 ## Anatomy of a PHP Request
 
