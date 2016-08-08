@@ -48,8 +48,8 @@ In the above example, we are using the `named!` macro to create a parser functio
 #[test]
 fn test_name_parer() {
     let empty = &b""[..];
-    assert_eq!(name_parser("name Herman".as_bytes()), IResult::Done(empty, ("Herman")));
-    assert_eq!(name_parser("name Kimberly".as_bytes()), IResult::Done(empty, ("Kimberly")));
+    assert_eq!(name_parser("hello Herman".as_bytes()), IResult::Done(empty, ("Herman")));
+    assert_eq!(name_parser("hello Kimberly".as_bytes()), IResult::Done(empty, ("Kimberly")));
 }
 ```
 
