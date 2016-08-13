@@ -31,6 +31,10 @@ projects:
   name: selecta-score-rs
   link: https://github.com/hjr3/selecta-score-rs
   description: "A more performant version of the selecta scoring algorithm."
+ -
+  name: softnet-stat
+  link: https://github.com/hjr3/softnet-stat
+  description: "Parse the `/proc/net/softnet_stat` file into something more readable."
 
 gems:
   - jekyll-feed
