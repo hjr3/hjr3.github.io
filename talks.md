@@ -7,6 +7,16 @@ title: Talks
 
 # {{ page.title }}
 
+## copperline & nom
+
+**Abstract:** _I will introducing a way to be an interactive (REPL-like) approach to building a stockfighter.io application using copperline and nom. These are both powerful Rust crates that compliment each other well._
+
+**Link to slides:** [Google Doc Presentation](https://docs.google.com/presentation/d/159oFYPRLlTkSmnrNjeCaj8zAwxx9jm4K_uJKqg4Tabg/edit?usp=sharing)
+
+**Presented at:**
+
+   * Los Angeles Rust Meetup - October, 2015
+
 ## Rust: Systems Programming for Web Developers
 
 **Abstract:** _The modern web stack is made up of a dozen different systems, but too few people know how to create and support them. I believe this is because systems programming has historically had too many barriers to entry, such as memory safety and the trading of expressiveness for performance. Let us explore some of the ways Rust breaks down these barriers and can make systems programming feel much more approachable to web developers._
