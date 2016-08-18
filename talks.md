@@ -15,7 +15,7 @@ title: Talks
 
 **Presented at:**
 
-   * Los Angeles Rust Meetup - October, 2015
+   * Los Angeles Rust Meetup - August, 2016
 
 ## Rust: Systems Programming for Web Developers
 
