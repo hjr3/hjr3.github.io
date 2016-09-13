@@ -8,7 +8,7 @@ type: post
 published: true
 ---
 
-If you have spent any amount of time learning Rust, you quickly become accustomed to `Option` and `Result` types. It is through these two core types that we make our programs reliable. My background is with C and dynamic languages. I found it easiest to use the `match` keyword when working with these types. There are also combinator functions like `map` and `and_then` which allow a set of computations to be chained together. I like to chain combinators together so error logic is separated the main logic of the code.
+If you have spent any amount of time learning Rust, you quickly become accustomed to `Option` and `Result` types. It is through these two core types that we make our programs reliable. My background is with C and dynamic languages. I found it easiest to use the `match` keyword when working with these types. There are also combinator functions like `map` and `and_then` which allow a set of computations to be chained together. I like to chain combinators together so error logic is separated from the main logic of the code.
 
 I recently returned home from RustConf 2016 where the [futures](https://github.com/alexcrichton/futures-rs) crate had a [0.1.1](https://crates.io/crates/futures/0.1.1) release along with the first glimpses of [tokio](https://github.com/tokio-rs/tokio). All futures implement a `poll` function that returns a [Poll](https://github.com/alexcrichton/futures-rs/blob/9bd186bef3430d26747ee886c54d5e68e0405275/src/lib.rs#L354) type. The `Poll` type is defined as `pub type Poll<T, E> = Result<Async<T>, E>;`. Thus, if we want to use futures, we need to be comfortable with combinator functions implemented on the core `Result` type. You will not be able to fall back on using the `match` keyword.
 
@@ -186,7 +186,7 @@ let res: Result<Result<i32, FooError>, BarError> = Ok(Err(FooError::Bad));
 
 let value = res
 
-    // `map` will only call the closure for `Ok(Result<i32, FooError>`
+    // `map` will only call the closure for `Ok(Result<i32, FooError>)`
     .map(|res: Result<i32, FooError>| {
 
         // transform `Ok(Result<i32, FooError>)` into `Ok(Result<usize, &'static str>)`
@@ -227,7 +227,7 @@ I decided to inline the explanation into the comments in an effort to make thing
 
 ## Conclusion
 
-A lot of functions return `Result` to represent the happy-path value and the error case. Using combinators can help isolate error handling from normal computation. Combinators also allow us to pass along errors all the way to the end. I like the [Railway Oriented Programming](https://fsharpforfunandprofit.com/rop/) for a good visualization of this concept. All the examples we went through work on the `Option` type too. You should now be better equipped to reading other code that uses `Result` combinator functions and writing them yourself.
+A lot of functions return `Result` to represent the happy-path value and the error case. Using combinators can help isolate error handling from normal computation. Combinators also allow us to pass along errors all the way to the end. I like the [Railway Oriented Programming](https://fsharpforfunandprofit.com/rop/) for a good visualization of this concept. All the examples we went through work on the `Option` type too. You should now be better equipped to read other code that uses `Result` combinator functions and writing them yourself.
 
 
 ## Extras
@@ -238,7 +238,7 @@ The `or_else` function combinator is the opposite of `and_then`. It only calls t
 
 ### Debugging Complex Combinators
 
-I like to make types explicit when trying get a complex combination working. However, this can get unrealistic when dealing with iterators or futures that become deeply nested. When that happens, I start assigning results to incorrect types. Here is an small example, assuming I am confused as to why type `res` is:
+I like to make types explicit when trying to get a complex combination working. However, this can get unrealistic when dealing with iterators or futures that become deeply nested. When that happens, I start assigning results to incorrect types. Here is a small example, assuming I am confused as to what type `res` is:
 
 ```rust
 // assume it is not clear what type `res` is
