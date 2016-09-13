@@ -54,7 +54,7 @@ let value = res
             Ok(n)
         }
     })
-    .and_then(|n: usize| Ok(n / 2)); // <--- closure is not called
+    .and_then(|n: usize| Ok(2 / n)); // <--- closure is not called
 
 assert_eq!(Err("cannot divide by zero"), value);
 ```
