@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Using and\_then and map combinators on the Rust Result type"
+title: "Using and_then and map combinators on the Rust Result Type"
 tags:
 - rustlang
 status: publish
