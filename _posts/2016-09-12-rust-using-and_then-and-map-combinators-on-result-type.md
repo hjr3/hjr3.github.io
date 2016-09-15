@@ -10,7 +10,7 @@ published: true
 
 If you have spent any amount of time learning Rust, you quickly become accustomed to `Option` and `Result` types. It is through these two core types that we make our programs reliable. My background is with C and dynamic languages. I found it easiest to use the `match` keyword when working with these types. There are also combinator functions like `map` and `and_then` which allow a set of computations to be chained together. I like to chain combinators together so error logic is separated from the main logic of the code.
 
-I recently returned home from RustConf 2016 where the [futures](https://github.com/alexcrichton/futures-rs) crate had a [0.1.1](https://crates.io/crates/futures/0.1.1) release along with the first glimpses of [tokio](https://github.com/tokio-rs/tokio). All futures implement a `poll` function that returns a [Poll](https://github.com/alexcrichton/futures-rs/blob/9bd186bef3430d26747ee886c54d5e68e0405275/src/lib.rs#L354) type. The `Poll` type is defined as `pub type Poll<T, E> = Result<Async<T>, E>;`. Thus, if we want to use futures, we need to be comfortable with combinator functions implemented on the core `Result` type. You will not be able to fall back on using the `match` keyword.
+I recently returned home from RustConf 2016 where the [futures](https://github.com/alexcrichton/futures-rs) crate had a [0.1.1](https://crates.io/crates/futures/0.1.1) release along with the first glimpses of [tokio](https://github.com/tokio-rs/tokio). All futures implement a `poll` function that returns a [Poll](https://github.com/alexcrichton/futures-rs/blob/9bd186bef3430d26747ee886c54d5e68e0405275/src/lib.rs#L354) type. The `Poll` type is defined as `pub type Poll<T, E> = Result<Async<T>, E>;`. ~~Thus, if we want to use futures, we need to be comfortable with combinator functions implemented on the core `Result` type. You will not be able to fall back on using the `match` keyword.~~Many of the examples that I have seen used combinator functions to chain futures together. We can look at how `and_then` and `map` combinators work on the `Result` type and get a better understanding of how combinators work without the additional mental load of trying to understand how futures work. Once we are comfortable with combinators, we should be better able to understand the examples that use combinators to chain futures together. (Edit: Revised the previous sentence per the discussion on [r/rust](https://www.reddit.com/r/rust/comments/52lsbb/using_and_then_and_map_combinators_on_the_rust/d7lbf4n)).
 
 ### Approach
 
@@ -41,7 +41,7 @@ In this second example, the value of `res` is `Err("error")`. Per our definition
 
 ### Chaining Multiple `and_then` Functions
 
-Instead of multiplying, let us divide the result by 2. To protect against division by zero errors, we need to add another step in the chain that will return an error if the value is zero.
+Instead of multiplying, let us divide 2 by the result `n`. To protect against division by zero errors, we need to add another step in the chain that will return an error if the value is zero.
 
 ```rust
 let res: Result<usize, &'static str> = Ok(0);
@@ -168,7 +168,7 @@ You must understand that:
 
 ## Different Return Types Using `and_then` And `map`
 
-The `and_then`, `map` and `map_err` functions are not constrained to return the same type inside their variants. The `map` functions can be given `Ok(T)` and return `Ok(U)`. The `map_err` function can be given `Err(E)` and return `Err(F)`. The `and_then` function can be given `Ok(T)` and return `Ok(T)` or `Err(F)`!
+The `and_then`, `map` and `map_err` functions are not constrained to return the same type inside their variants. The `map` functions can be given `Ok(T)` and return `Ok(U)`. The `map_err` function can be given `Err(E)` and return `Err(F)`. The `and_then` function can be given `Ok(T)` and return `Ok(U)` or `Err(F)`!
 
 Let us try a complicated example where we are given a nested Result, but none of the types match the desired types we want. Example: We are given `Result<Result<i32, FooError>, BarError>`, but we want `Result<usize, &'static str>`.
 
