@@ -114,7 +114,7 @@ fn remove_spaces<'a>(input: &'a str) -> Cow<'a, str> {
 
         return buf.into();
     }
-    return buf.into();
+    return input.into();
 }
 ```
 
