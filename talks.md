@@ -7,6 +7,16 @@ title: Talks
 
 # {{ page.title }}
 
+## Creating Better Function Interfaces in Rust
+
+**Abstract:** _Rust has a powerful type system, but do you know how to create good interfaces with those types? Rust's ownership model can make it challenging to translate how a program works in your mental model to syntax that satisfies the Rust compiler. We do not need to contort our interfaces in order to satisfy the compiler. I will introduce some strategies for working with the DST/slice pattern using the `Into` trait and `Cow` enum. I will also show how lifetimes can be leveraged to create safer interfaces for resource access._
+
+**Link to slides:** [Google Doc Presentation](https://docs.google.com/presentation/d/1kH5xXvHj9CU1_OfYXM4oaeo3VVzAyhUlcW9LNirCQwI/edit?usp=sharing)
+
+**Presented at:**
+
+   * Rust Belt Rust Conference - October, 2016
+
 ## copperline & nom
 
 **Abstract:** _I will introducing a way to be an interactive (REPL-like) approach to building a stockfighter.io application using copperline and nom. These are both powerful Rust crates that compliment each other well._
