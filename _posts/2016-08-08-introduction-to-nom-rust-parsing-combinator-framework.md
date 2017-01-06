@@ -46,7 +46,7 @@ In the above example, we are using the `named!` macro to create a parser functio
 
 ```rust
 #[test]
-fn test_name_parer() {
+fn test_name_parser() {
     let empty = &b""[..];
     assert_eq!(name_parser("hello Herman".as_bytes()), IResult::Done(empty, ("Herman")));
     assert_eq!(name_parser("hello Kimberly".as_bytes()), IResult::Done(empty, ("Kimberly")));
