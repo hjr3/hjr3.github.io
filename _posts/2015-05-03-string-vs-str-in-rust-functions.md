@@ -26,7 +26,7 @@ fn print_me(msg: String) {
 }
 
 fn main() {
-    let message = "hello world";
+    let msg = "hello world";
     print_me(msg);
 }
 ```
