@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Future Based mpsc Queue with Tokio"
+title: "Future Based mpsc Queue Example with Tokio"
 tags:
 - rustlang
 status: publish
