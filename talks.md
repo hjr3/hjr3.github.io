@@ -7,6 +7,19 @@ title: Talks
 
 # {{ page.title }}
 
+## Edge transformations: a primer on Fastly's image optimization
+
+**Abstract:** _Today, a staggering 64% of all web traffic (62% on mobile) is image content. It therefore comes as no surprise that image optimization is the number one feature request by Fastly customers. The reason for this is very simple – Image optimization and delivery come with many pain points. It can be tediously repetitive, error-prone and, due to the many moving parts of a typical image pipeline, be expensive to self-host, support and scale._
+
+_In this workshop we will introduce you to the many advantages of image optimization, discuss use cases, and even show you a few advanced options._
+
+**Link to slides:** TBD
+**Link to video:** TBD
+
+**Presented at:**
+
+   * Fastly Altitude NYC - March, 2017
+
 ## Creating Better Function Interfaces in Rust
 
 **Abstract:** _Rust has a powerful type system, but do you know how to create good interfaces with those types? Rust's ownership model can make it challenging to translate how a program works in your mental model to syntax that satisfies the Rust compiler. We do not need to contort our interfaces in order to satisfy the compiler. I will introduce some strategies for working with the DST/slice pattern using the `Into` trait and `Cow` enum. I will also show how lifetimes can be leveraged to create safer interfaces for resource access._
