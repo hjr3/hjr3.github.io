@@ -13,8 +13,8 @@ title: Talks
 
 _In this workshop we will introduce you to the many advantages of image optimization, discuss use cases, and even show you a few advanced options._
 
-**Link to slides:** TBD
-**Link to video:** TBD
+**Link to repository:** [Github](https://github.com/hautelook/altitude-2017-fastly-image-opto)
+**Link to video:** [Vimeo](https://vimeo.com/212307490#t=1870s)
 
 **Presented at:**
 
