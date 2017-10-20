@@ -8,6 +8,14 @@ type: post
 published: true
 ---
 
+**Note: This blog post does will not work with rustc 1.18.0 or later due to a [regression](https://github.com/rust-lang/rust/issues/42460) in rust 1.19.0. Use the following to set rust 1.18.0 up:**
+
+```
+$ cd /path/to/project
+$ rustup install 1.18.0
+$ rustup override 1.18.0
+```
+
 In this post we are going to hook our [basic webservice](/2016/05/16/creating-a-basic-webservice-in-rust.html) up to a database. The webservice will accept a request for `/orders`, query the database for orders and return a json response. I will be using PostgreSQL in this example. There is a pure Rust [PostresSQL driver](https://crates.io/crates/postgres) written by Steven Fackler (sfackler) that I think is well done. That being said, the [mysql crate](https://crates.io/crates/mysql) looks well done too.
 
 This post goes into a fair amount of detail. You can skip right to the [TL;DR](#tldr) for the final solution.
