@@ -8,7 +8,7 @@ type: post
 published: true
 ---
 
-**Note: This blog post does will not work with rustc 1.19.0 or later due to a [regression](https://github.com/rust-lang/rust/issues/42460) in rust 1.19.0. Use the following to set rust 1.18.0 up:**
+**Note: This blog post does not work with rustc 1.19.0 or later due to a [regression](https://github.com/rust-lang/rust/issues/42460) in rust 1.19.0. Use the following to set rust 1.18.0 up:**
 
 ```
 $ cd /path/to/project
