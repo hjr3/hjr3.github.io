@@ -36,7 +36,7 @@ projects:
   link: https://github.com/hjr3/softnet-stat
   description: "Parse the `/proc/net/softnet_stat` file into something more readable."
 
-gems:
+plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
