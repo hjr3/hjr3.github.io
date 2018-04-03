@@ -58,7 +58,7 @@ To round out my understanding, let us also briefly talk about the hangup (hup) e
 
 With my improved understanding of ownership and a more accurate mental model of how the kernel sends events, the fix is pretty simple. Before processing any events, make sure the connection is in the slab. The diff of the change is [here](https://github.com/hjr3/mob/pull/23/commits/485487217ddde7d316d7c7b0ac9057696278bc43#diff-4ce93534efc34e923ce01e975eb7ed80R105). Most of the changes are removing code, so let me walk through the important parts.
 
-```
+```rust
 if self.token != token && self.conns.contains(token) == false {
     debug!("Failed to find connection for {:?}", token);
     return;
