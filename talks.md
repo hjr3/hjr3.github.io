@@ -7,6 +7,13 @@ title: Talks
 
 # {{ page.title }}
 
+## Velocity Conf Program Committee
+
+   * [2017 New York Committee Member](https://conferences.oreilly.com/velocity/vl-ny-2017/public/content/about#committee-members)
+   * [2017 London Committee Member](https://conferences.oreilly.com/velocity/vl-eu-2017/public/content/about#committee)
+   * [2018 San Jose Committee Member](https://conferences.oreilly.com/velocity/vl-ca/public/content/about#committee-members)
+   * [2018 San Jose Leadership Sessions Track Host](https://conferences.oreilly.com/velocity/vl-ca/public/schedule/topic/2696)
+
 ## Edge transformations: a primer on Fastly's image optimization
 
 **Abstract:** _Today, a staggering 64% of all web traffic (62% on mobile) is image content. It therefore comes as no surprise that image optimization is the number one feature request by Fastly customers. The reason for this is very simple – Image optimization and delivery come with many pain points. It can be tediously repetitive, error-prone and, due to the many moving parts of a typical image pipeline, be expensive to self-host, support and scale._
