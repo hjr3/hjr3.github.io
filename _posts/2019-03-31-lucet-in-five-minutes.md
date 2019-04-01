@@ -35,7 +35,7 @@ Hello world
 
 This docker container provides a version of clang capable of compiling to wasm via the `wasm32-unknown-wasi-clang` command. It is a not a requirement to compile your program to wasi using `wasm32-unknown-wasi-clang` in this docker container. The only requirement is that you compile the program to wasi before using `lucetc-wasi`. Also, take note that `lucetc-wasi` and `lucet-wasi` have very similar spellings, but are indeed two different programs.
 
-If you are wondering why I did not demo converting a Rust program to WASI, we are blocked until [wasm32-unknown-wasi][wasi PR] is a valid target in rustup. As soon as that target is available, then I plan on creating another post showing how to get Rust + lucet working together.
+~~If you are wondering why I did not demo converting a Rust program to WASI, we are blocked until [wasm32-unknown-wasi][wasi PR] is a valid target in rustup. As soon as that target is available, then I plan on creating another post showing how to get Rust + lucet working together.~~ See [WASI example using Rust and Lucet][Rust example] for a Rust example that runs on lucet.
 
 Lucet is not 1.0 yet and I expect to be changing it a lot. As of this moment, the [hjr3/lucet][hjr3/lucet container] container is built against [fastly/lucet commit e6b399b][e6b399b]. As new changes come in, I will do my best to update the container. I may setup an automated process if this proves useful to people. I will tag each version against the fastly/lucet commit the container is built against.
 
@@ -46,3 +46,4 @@ Lucet is not 1.0 yet and I expect to be changing it a lot. As of this moment, th
 [wasi PR]: https://github.com/rust-lang/rust/pull/59464
 [hjr3/lucet container]: https://hub.docker.com/r/hjr3/lucet
 [e6b399b]: https://github.com/fastly/lucet/commit/e6b399b3fc6794f8f78a8bf6ad404ca640a090c4
+[Rust example]: /2019/04/01/wasi-example-using-rust-and-lucet.html
