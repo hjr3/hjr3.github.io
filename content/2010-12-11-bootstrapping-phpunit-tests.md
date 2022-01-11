@@ -1,0 +1,24 @@
++++
+title = "Bootstrapping PHPUnit tests"
+path = "/2010/12/11/bootstrapping-phpunit-tests.html"
+
+[taxonomies]
+tags=["crimson", "php", "phpunit"]
++++
+
+I just recently stumbled upon PHPUnit's --bootstrap flag.  I used to bootstrap each of my unit tests using a require statement at the top of the file.  I always found this very tedious, but did not want to write some script to wrap each unit test.  The --bootstrap flag solves this problem quite nicely.<!-- more -->
+
+My unit tests used to look something like this:
+<pre lang="php">require_once dirname(__FILE__) . '/../TestHelper.php';
+
+class FooTest extends \PHPUnit_Framework_TestCase { ... }
+</pre>
+This allowed me to run the tests as part of a suite or run them individually.  This worked fine, but it was annoying to always have to make sure the require_once statement was correct.  As I create tests in sub-directories I would often forget this.  I can now remove the require statement and run the unit test with the following command:
+<pre lang="bash">phpunit --bootstrap TestHelper.php crimsontest/FooTest.php
+</pre>
+I create a runtests.sh script so I don't have to manually type the phpunit command plus the required flag:
+<pre lang="bash">#!/bin/bash
+DIR=`dirname $0`
+phpunit --bootstrap $DIR/TestHelper.php $DIR/crimsontest/AllTests.php
+</pre>
+I already updated all the unit tests in the <a href="https://github.com/hradtke/crimson" target="_blank">Crimson</a> framework to use a the bootstrap strategy.

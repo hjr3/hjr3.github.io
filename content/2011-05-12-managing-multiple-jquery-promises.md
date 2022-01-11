@@ -1,0 +1,50 @@
++++
+title = "managing multiple jQuery promises"
+path = "/2011/05/12/managing-multiple-jquery-promises.html"
+
+[taxonomies]
+tags=["ajax", "javascript", "promise"]
++++
+
+The new jQuery 1.5 version has support for promises.  Promises allows code to be dependent on the completion of an asynchronous event.  Promises are most commonly used when making an AJAX request.  I recently had to solve a problem where I was issuing many AJAX requests and wanted to make sure all were completed before moving on to the next task.  To make matters more complicated, I was issuing the requests using jsonp.  Some of the requests were chained from other requests as well.  Trying to track all the promises by individually was becoming a mess.  After speaking with a colleague, I set about creating a function to manage multiple promises.<!-- more -->
+
+If you are unfamiliar with promises, I suggest you read this <a title="Using Deferreds in jQuery 1.5" href="http://www.erichynds.com/jquery/using-deferreds-in-jquery/" target="_blank">article</a>.  I borrowed the code for managing multiple promises from <a title="Promise utilities for node" href="https://github.com/kriszyp/node-promise" target="_blank">https://github.com/kriszyp/node-promise</a>.  Essentially, we can use a promise to wrap many promises.  Only once the given set of promises are completely resolved does the wrapper promise resolve itself.  This is commonly called "all()".
+<pre lang="javascript">var all = function(array){
+    var deferred = $.Deferred();
+    var fulfilled = 0, length = array.length;
+    var results = [];
+
+    if (length === 0) {
+        deferred.resolve(results);
+    } else {
+        array.forEach(function(promise, i){
+            $.when(promise()).then(function(value) {
+                results[i] = value;
+                fulfilled++;
+                if(fulfilled === length){
+                    deferred.resolve(results);
+                }
+            });
+        });
+    }
+
+    return deferred.promise();
+};</pre>
+Looking at the implementation, the above function is pretty straightforward.  Let's look at an example on how to use it.
+<pre lang="javascript">var users = ['john', 'ringo', 'paul', 'george'];
+var promises = [];
+
+users.forEach(function(user) {
+    promises.push(function() {
+        return $.Deferred(function(dfd) {
+            $.get('/account/' + user, function(data) {
+               dfd.resolve(data);
+            });
+        }).promise();
+    });
+});
+
+$.when(all(promises)).then(function(results) {
+    // do something with the results
+});</pre>
+The above example is making a series of requests for account information on a list of users.  Looping over the array of users, we push an anonymous function into an array call promises.  This anonymous function simply gives all() something to execute when call it.  We then wrap each ajax request in a promise  using $.Deferred().  We specify a callback that is the ajax request and then call promise() on $.Deferred.  The effect of this is that the all() function will iterate of the array of promises and execute each anonymous function.  The anonymous function returns the promise and the all() function keeps track of the state of each promise.  Once all the promises have been resolved, the all() function will resolve itself internal promise.  This allows use to use the all() function as single argument to $.when() that represents a set of promises we are expecting to finish.

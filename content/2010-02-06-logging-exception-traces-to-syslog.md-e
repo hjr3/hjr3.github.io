@@ -1,0 +1,39 @@
++++
+title = "Logging Exception Traces To syslog"
+path = "/2010/02/06/logging-exception-traces-to-syslog.html"
+
+[taxonomies]
+tags=["php", "splunk", "syslog"]
++++
+
+If you have ever visited <a class="zem_slink" title="Stack Overflow" rel="homepage" href="http://stackoverflow.com/">StackOverflow.com</a> you may have noticed the ads for <a class="zem_slink" title="Splunk" rel="homepage" href="http://www.splunk.com/">Splunk</a>.  Splunk aggregates log files together and provides a web interface to search through those logs.  The setup for php is easy: set the php.ini error_log value to "<a class="zem_slink" title="Syslog" rel="wikipedia" href="http://en.wikipedia.org/wiki/Syslog">syslog</a>".  The Splunk instructions show you how add a single line to your syslong.conf to have syslog send those messages over to Splunk.<!--more-->
+
+The only downside to this is that syslog commonly has a limit of 1024 characters per message.  You can change this, but you have to recompile the kernel.  This is especially frustrating when an uncaught exception gets logged.  The log message looks something like this:
+<blockquote>PHP Fatal error:  Uncaught exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[HY093]:
+Invalidparameter number: no parameters were bound' in /some/path/to/Zend/Db/Statement
+/Pdo.php:234Stack trace: #0 /some/path/to/Zend/Db/Statement.php(320): Zend_Db_Statement_
+Pdo-&gt;_execute(Array)#1 /some/path/to/Zend/Db/Adapter/Pdo/Mysql.php(572): Zend_Db_
+Statement-&gt;execute(Array) #2 /some/path/to/Zend/Db</blockquote>
+If you have used Zend_Db_Statement you have probably seen this error message.  If not, it simply means that too few variables are being specified or one of the variables is null when trying to bind all the variables to the placeholders in a SQL statement.  Do you see the problem with this log message though?  It gets cut off way before the stack trace provides any hint as to what code caused it.  If I am using automated testing, it may be very difficult to tell what actually caused the exception.
+
+To get around this, I wrote an exception handler to split the stack trace into separate messages.
+<blockquote>SQLSTATE[HY093]: Invalid parameter number: no parameters were bound Strack Trace:
+PHP 0. _execute /some/path/to/Zend/Db/Statement.php:320
+PHP 1. execute /some/path/to/Zend/Db/Adapter/Pdo/Mysql.php:572
+PHP 2. query /some/path/to/Zend/Db/Table/Abstract.php:1509
+PHP 3. _fetch /some/path/to/Zend/Db/Table/Abstract.php:1325
+PHP 4. getDooDads /some/path/to/application/default/models/DooDads.php:112
+PHP 5. getAction /some/path/to/application/default/controllers/DooDadsController.php:15
+PHP 6. init /some/path/to/Zend/Controller/Action.php:133
+PHP 7. __construct /some/path/to/Zend/Controller/Dispatcher/Standard.php:262
+PHP 8. dispatch /some/path/to/Zend/Controller/Front.php:946
+PHP 9. dispatch /some/path/to/html/index.php:23</blockquote>
+Now it is very clear that I need to add some more validation to my DooDads model.
+
+The code is on github <a href="http://github.com/hradtke/crimson/tree/master/Crimson_ExceptionHandler/">here</a>.  I am able to just drop it in to any project I am working on and get more verbose logging via syslog.
+<div class="zemanta-pixie" style="margin-top: 10px; height: 15px;"><a class="zemanta-pixie-a" title="Reblog this post [with Zemanta]" href="http://reblog.zemanta.com/zemified/8665acfa-63c5-429c-8dbf-6d77b874e655/"><img class="zemanta-pixie-img" style="border: medium none; float: right;" src="http://img.zemanta.com/reblog_e.png?x-id=8665acfa-63c5-429c-8dbf-6d77b874e655" alt="Reblog this post [with Zemanta]" /></a><span class="zem-script more-related pretty-attribution"><script src="http://static.zemanta.com/readside/loader.js" type="text/javascript"></script></span></div>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 18px; width: 1px; height: 1px;">PHP Fatal error:  Uncaught exception 'Zend_Db_Statement_Exception' with message 'SQLSTATE[HY093]:
+Invalidparameter number: no parameters were bound' in /some/path/to/Zend/Db/Statement/Pdo.php:234
+Stack trace: #0 /some/path/to/Zend/Db/Statement.php(320): Zend_Db_Statement_Pdo-&gt;_execute(Array)
+#1 /some/path/to/Zend/Db/Adapter/Pdo/Mysql.php(572): Zend_Db_Statement-&gt;execute(Array) #2 /some/
+path/to/Zend/Db</div>

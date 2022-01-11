@@ -1,0 +1,17 @@
++++
+title = "Choosing VIM"
+path = "/2009/04/11/choosing-vim.html"
+
+[taxonomies]
+tags=["editor", "ide", "php", "vim"]
++++
+
+At work we were using VIM for all editing, except PHP.  Back when the decision was made to use PHP for all web development, consultants told us we needed an IDE that offered all kinds of tools that VIM lacks.  So we shopped around for IDE's and eventually bought Zend Studio licenses for everyone.  Today those licesnses are collecting dust.  Even with the feature rich toolset of Zend Studio, and other IDE's, none seem to satisfy our need like VIM does.
+
+<!-- more -->
+
+I decided a few weeks ago that I would try to find the tools we liked in Zend Studio that were missing from VIM.  I know we didn't need things like version control integration or project management plugins.  The Linux command line is more than capable of handling these sorts of tasks.  And since most of us at work are Bash enthusiasts, doing it on the command line is often much faster.  What we needed were things like DocBlock generation and tag browsing.
+
+I got started by referencing Thomas Kock's post on using <a title="VIM as a PHP IDE" href="http://www.koch.ro/blog/index.php?/archives/63-VIM-an-a-PHP-IDE.html" target="_blank">VIM as a PHP IDE</a>.  We already use cscope, so all the plugins he listed were pretty easy to introduce into our workflow.  The CodeSniffer integration is really sexy.  I did run into a problem with phpDocumentor for Vim.  It seems that Tobias Schlitt is no longer supporting that plugin.  Due to the ineffeciencies of vim.org, I moved the code over to <a href="http://github.com/hradtke/pdv/tree/master">github</a>.
+
+I don't think VIM is the right PHP editor for everyone, but it has been working fairly well for us.

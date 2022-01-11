@@ -1,0 +1,19 @@
++++
+title = "Using the Gearman Tool For Rapid Development of Clients and Workers"
+path = "/2012/01/25/using-gearman-tool-for-rapid-development-of-clients-and-workers.html"
+
+[taxonomies]
+tags=["gearman", "gearmand", "php"]
++++
+
+Gearman comes with a few tools that make development and testing easier. The <em>gearman</em> program creates boilerplate clients and workers. The <em>gearman</em> program comes default with the gearmand package. Do not confuse <em>gearman</em> with <em>gearmand</em>. The <em>gearmand</em> daemon is what manages the queue, clients and workers. The <em>gearman</em> program is a tool to quickly create simple clients and workers. The options for <em>gearman</em> can be slightly confusing, so I will go through a set of examples on how to use them.<!-- more -->
+
+I find myself using the client functionality of the <em>gearman</em> tool most often. If I am tasked with creating or updating a gearman worker I want to test that the worker actually works. The code that sends a job to the worker is normally part of the web application and I don't want to dig through the application trying to figure out what I need to do send the job out. I could just create a simple php script that creates a client and sends the job over, but the <em>gearman</em> tool already does this.
+
+Example of using <em>gearman </em>as a client:
+<script src="https://gist.github.com/1677655.js?file=client.sh"></script>
+I use the <em>gearman</em> program as a worker less often. It is still useful for creating a simple worker to test my client code against. I can write my client code without a fully functional worker if the client code is not expecting a complex response.
+
+Example of using <em>gearman</em> as a worker:
+<script src="https://gist.github.com/1677655.js?file=worker.sh"></script>
+The <em>gearman</em> tool comes with the standard options for specifying a specific host and port. There are a number of other options that may be of use in specific circumstances. I encourage you to read them over by typing "gearman -H" on the command line.

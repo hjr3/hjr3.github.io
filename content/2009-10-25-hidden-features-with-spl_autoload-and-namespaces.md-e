@@ -1,0 +1,34 @@
++++
+title = "Hidden features with spl_autoload() and namespaces"
+path = "/2009/10/25/hidden-features-with-spl_autoload-and-namespaces.html"
+
+[taxonomies]
+tags=["autoloading", "namespaces", "php", "php53", "spl"]
++++
+
+The namespace operator in PHP 5.3 is a backslash (\).  One of the criticisms of this operator is that the code starts to look like directory paths on Windows.  The added side benefit of this is that spl_autoload() knows how to autoload classes that use a namespace style that matches the directory layout.
+
+<!--more-->
+<pre lang="php">$baz = new \foo\bar\Baz;</pre>
+The spl_autoload() function gets passed the fully qualified namespace as well as the class name.  This is very similar to the PEAR class naming convention of using underscore characters (_) to denote the path to a class.
+
+Consider the following:
+
+The spl_autoload() funtion is passed the string 'foo\Bar'.  The extensions registered by spl_autoload_extensions() are then used in conjunction with include paths to look for a valid file.  The spl_autoload_extensions() function has the extensions .inc and .php registered by default.  The default include_path is the current directory, so let's assume the current directory is D:\herman\php.
+
+List of attempts by spl_autoload() to load the class from the above example:
+<ul>
+	<li>D:\herman\php\foo\Bar.inc</li>
+	<li>D:\herman\php\foo\Bar.php</li>
+</ul>
+This means that you can map each namespace to a directory in your application.  Consider the following directory layout.
+
+blog\
+models\
+Author.php
+controllers\
+PostController.php
+
+The namespace for the Author class in the Author.php file should be 'blog\models'.  The namespace for the PostController class in the PostController.php file should be 'blog\controllers'.  Using this namespacing strategy along with a proper include path allows php to autoload your classes out of the box.
+
+<span style="color: #ff0000;">Remember, this only works with PHP on Windows.  I have a pending patch to make spl_autoload() work with namespacing by default on Linux.</span>

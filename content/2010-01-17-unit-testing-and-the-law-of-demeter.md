@@ -1,0 +1,50 @@
++++
+title = "Unit Testing and the Law of Demeter"
+path = "/2010/01/17/unit-testing-and-the-law-of-demeter.html"
+
+[taxonomies]
+tags=["php", "testing", "unittest"]
++++
+
+I was writing some code today and not using <a class="zem_slink" title="Test-driven development" rel="wikipedia" href="http://en.wikipedia.org/wiki/Test-driven_development">Test-Driven development</a>.  The reason was that I did not have a good understanding of what I was writing, so I decided to write some of the guts before writing the tests.   In the process of writing the guts, I recognized that I was paying very close attention to how I was going to later test each of the methods I was writing.  I was paying especially close attention to the <a class="zem_slink" title="Law of Demeter" rel="wikipedia" href="http://en.wikipedia.org/wiki/Law_of_Demeter">Law of Demeter</a>.   The idea behind the Law of Demeter is to keep units of code distinct from one another.  So how did this relate to my code?   To put it simply, my business logic methods did not use get methods.
+<!-- more -->
+
+Assume we have a person class.  The class constructor takes the persons full name and we have a getter and setter for the full name.
+<pre lang="php">
+<?php
+class Person
+{
+    protected $fullName;
+
+    public function __construct($fullName)
+    {
+        $this->setFullName($fullName);
+    }
+
+    public function setFullName($fullName)
+    {
+        $this->_fullName = $fullName;
+    }
+
+    public function getFullName()
+    {
+        return $this->_fullName;
+    }
+}
+</pre>
+There is also a method that parses apart the persons full name into separate parts.  The naive approach:
+<pre lang="php">    public function parseFullName()
+    {
+        $nameParts = explode(' ', $this->getFullName());
+        ...
+    }</pre>
+This code works fine, but think about how we will write a test for this function.  We have to first set the full name using a setter so the parseFullName method can retrieve that value with a getter.  This violates one of the principle rules of unit testing: testing individual units of code.  If there is a bug in the getter or setter functions, they may inadvertently affect my test.  This is a very real issue when using the magic __get and __set methods.  It also means more work to setup your tests because you have to keep in mind an order of operations when testing.
+
+The better approach:
+<pre lang="php">    public function parseFullName($fullName)
+    {
+        $nameParts = explode(' ', $fullName);
+        ...
+    }</pre>
+Notice how the parseFullName function is being <em>told</em> what to parse rather than <em>asking</em> what to parse.  This subtle change now allows us to truly test this individual unit of code with the least amount of outside environment interaction.
+<div class="zemanta-pixie" style="margin-top: 10px; height: 15px;"><a class="zemanta-pixie-a" title="Reblog this post [with Zemanta]" href="http://reblog.zemanta.com/zemified/6314f3a0-e1d8-4018-a07a-9b9cb50489c9/"><img class="zemanta-pixie-img" style="border: medium none; float: right;" src="http://img.zemanta.com/reblog_e.png?x-id=6314f3a0-e1d8-4018-a07a-9b9cb50489c9" alt="Reblog this post [with Zemanta]" /></a><span class="zem-script more-related pretty-attribution"><script src="http://static.zemanta.com/readside/loader.js" type="text/javascript"></script></span></div>

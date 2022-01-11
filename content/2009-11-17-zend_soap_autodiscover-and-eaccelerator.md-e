@@ -1,0 +1,22 @@
++++
+title = "Zend_Soap_AutoDiscover and eAccelerator"
+path = "/2009/11/17/zend_soap_autodiscover-and-eaccelerator.html"
+
+[taxonomies]
+tags=["eaccelerator", "php", "soap", "wsdl", "zendframework"]
++++
+
+The <a class="zem_slink" title="Zend Framework" rel="homepage" href="http://framework.zend.com/">Zend Framework</a> ships with <a class="zem_slink" title="SOAP" rel="wikipedia" href="http://en.wikipedia.org/wiki/SOAP">SOAP</a> functionality and one especially neat class called Zend_Soap_AutoDiscover.  <a href="http://framework.zend.com/"><img class="alignright" title="Zend Framework Logo" src="http://framework.zend.com/images/logo_small.gif" alt="" width="123" height="23" /></a>This class uses a comment docblock to auto-generate a <a class="zem_slink" title="Web Services Description Language" rel="wikipedia" href="http://en.wikipedia.org/wiki/Web_Services_Description_Language">WSDL</a> at runtime.  I won't go into the details how it works here, but you can check the <a href="http://framework.zend.com/manual/en/zend.soap.autodiscovery.html">Zend Framework documentation</a> for an example.  When using this class at work, I noticed the WSDL would not always generate correctly.  After a lot of digging around, I found the cause: eAccelerator.
+
+<!--more-->
+
+eAccelerator is an opcode cache.  An opcode cache saves the compiled version of a script so <a class="zem_slink" title="PHP" rel="homepage" href="http://www.php.net/">PHP</a> does not have to parse it again.  eAccelerator also<a href="http://eaccelerator.net/ticket/229"> strips out comments</a> from the script by default.  That means once your script gets cached, the Zend_Soap_AutoDiscover class has no way of correctly auto-generating the WSDL.
+
+<a href="http://eaccelerator.net/"><img class="alignnone" title="eAccelerator logo" src="http://eaccelerator.net/chrome/common/eaccelerator.png" alt="" width="247" height="33" /></a>
+
+Fortunately, there are some easy solutions to this problem.  The easiest is to configure eAccelerator 0.9.6 to not strip out the comments.  When compiling eAccelerator, specify the --with-eaccelerator-doc-comment-inclusion switch in the configure script.  Install the new compiled version and make sure to <em>clean</em> out your existing cache directory.
+
+Now if you are running eAccelerator 0.9.5, like me, and are unable to upgrade there is still hope.  eAccelerator comes with some ini settings that allow us to not cache scripts.  Using the eaccelerator.filter setting, we can tell eAccelerator to ignore scripts by filename.  You can set it in your php.ini file or just specify it at runtime:
+<pre lang="php">ini_set('eaccelerator.filter', '!foo/Bar.php !baz.php');</pre>
+With comments preseved, the Zend_Soap_AutoDiscover class will be able to properly generate the WSDL.
+<div class="zemanta-pixie" style="margin-top: 10px; height: 15px;"><a class="zemanta-pixie-a" title="Reblog this post [with Zemanta]" href="http://reblog.zemanta.com/zemified/a0294b42-5e52-4c18-a54b-c96c3d9d7afa/"><img class="zemanta-pixie-img" style="border: medium none ; float: left;" src="http://img.zemanta.com/reblog_e.png?x-id=a0294b42-5e52-4c18-a54b-c96c3d9d7afa" alt="Reblog this post [with Zemanta]" /></a><span class="zem-script more-related pretty-attribution"><script src="http://static.zemanta.com/readside/loader.js" type="text/javascript"></script></span></div>

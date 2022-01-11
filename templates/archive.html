@@ -1,0 +1,11 @@
+{% import "macros/page.html" as page_macros %}
+{% extends "index.html" %}
+{% block title %}{{ page.title }}{% endblock %}
+
+
+{% block content %}
+{% set posts_section = get_section(path="_index.md") %}
+{% for page in posts_section.pages %}
+  {{ page_macros::page_listing(page=page) }}
+{% endfor %}
+{% endblock content %}

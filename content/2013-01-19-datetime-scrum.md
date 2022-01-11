@@ -1,0 +1,12 @@
++++
+title = "What do MySQL datetime types and scrum have in common?"
+path = "/2013/01/19/datetime-scrum.html"
++++
+
+I have always wondered why the MySQL datetime type only has second precision. Developers will happily put a datetime type in a unique index though. They justify that decision by telling themselves, "Two rows inserted within the same second will never happen". That same developer just got done reading the latest MongoDB article that benchmarked a gazillion inserts a second. They tweeted it too. I suggest that we use a bigint and store a timestamp with greater precision if we are to use it as a unique index (or use Postgres). "A bigint takes up too much space!". Cool guid there, bro. So what does this tangent have to do with scrum? This whole notion of 2-4 week sprints for development is akin to using second precision when a [Fusion ioDrive2](http://www.fusionio.com/data-sheets/iodrive2-duo/) can rock 500 million write IOPS.
+
+I just have this notion in my head that 2-4 week sprints are not condusive to good business. I may be wrong, but [95% of startups fail](http://blog.expensify.com/2013/01/11/ceo-friday-startup-best-practices-95-failure-rate/) anyways so you might as well try something different. I prefer 1-2 day iterations. It may sound crazy to break a 4 month project down into 1-2 day iterations, but I think the end result will be significantly better. It distills a project or feature down to what is most important. With 2 week iterations, going through 4 iterations of a product takes 2 months. That feels like a lifetime to me.  The quarter is nearly over by then. I hope your (educated) guess was right because you have almost no time to try something else. I am not even confining this 1-2 day iteration idea to startups either. I think it is more important for larger businesses because they have more to gain (and lose).
+
+I expect this 1-2 day pace to feel chaotic to most people. Most people want to establish some kind of process so they feel like they have some control. A 2-4 week sprint is great because we now have time to estimate. With estimates we now have visibility into the healthiness of the project through burndown charts and can measure things like team velocity. When did "team velocity" suddenly become more important than growing the business? They would rather sit up in the ivory tower and watch Uncle Bob discuss the best practice for the number of lines of a class method instead.
+
+Grow the business. And stop using MySQL datetime fields in unique indices.

@@ -1,0 +1,68 @@
++++
+title = "More Reliable Authentication in Zend Framework"
+path = "/2009/06/17/more-reliable-authentication-in-zend-framework.html"
+
+[taxonomies]
+tags=["authentication", "php", "security", "zendframework"]
++++
+
+Stefan Esser gave a presentation on <a href="http://www.suspekt.org/2009/06/16/dutch-php-conference-the-slides/">Secure Programming with the Zend Framework at the 2009 Dutch PHP Conference</a>.  While the presentation was good, one thing that bothered me was the way authentication was being handled.
+
+<!-- more -->
+
+<strong>Note that this a very minimal example of how I handle authentication.  Please make sure to completely implement, document and test before putting this on a production server.</strong>
+
+Stefan's suggested implementation is to extend the Zend_Controller_Action class to create a custom controller class and use the init() method to determine if the user is logged in.  Developers are expected to then extend this new class to create specific controllers.  The obvious problem with this approach, as Stefan mentions, is that anyone who overloads the init() method must make sure to call the parent's init() method.  If security relies on an individual developer remembering to call the correct methods, then the system is not very secure.  Stefan makes a comment similar to this in the XSS section of his presentation.
+
+I think the better solution to handle the authentication is to create a controller plugin.  The authentication controller plugin is registered in one spot, the bootstrap, thus making it much more reliable.  There really isn't much more work to do to use a plugin either.
+
+Start by extending the Zend_Controller_Plugin_Abstract class.
+<pre lang="php">class My_Authentication extends Zend_Controller_Plugin_Abstract
+{
+    public function preDispatch(Zend_Controller_Request_Abstract $request)
+    {
+        $auth = Zend_Auth::getInstance();
+        if ($auth->hasIdentity()) {
+            return;
+        }
+
+        self::setDispatched(false);
+        // handle unauthorized request...
+    }
+}</pre>
+In the bootstrap, make sure to register the plugin before calling the front controller's dispatch() method.
+<pre lang="php">$controller = Zend_Controller_Front::getInstance();
+$controller->registerPlugin(new My_Authentication());
+$controller->dispatch();</pre>
+The above method works fine if your login page is outside your MVC routing.  If you use a login controller, there is some more work to do.  A white-list of controllers and actions must be maintained to signal the authentication adapter that authentication is not required.  I keep the white-list as a hard-coded array inside the authentication plugin class itself.  Our class then becomes:
+<pre lang="php">class My_Authentication extends Zend_Controller_Plugin_Abstract
+{
+
+    private $_whitelist;
+
+    public function __construct()
+    {
+        $this->_whitelist = array(
+            'index/login'
+        );
+    }
+
+    public function preDispatch(Zend_Controller_Request_Abstract $request)
+    {
+        $controller = strtolower($request->getControllerName());
+        $action = strtolower($request->getActionName());
+        $route = $controller . '/' . $action;
+
+        if (in_array($route, $this->_whitelist)) {
+            return;
+        }
+
+        $auth = Zend_Auth::getInstance();
+        if ($auth->hasIdentity()) {
+            return;
+        }
+
+        self::setDispatched(false);
+        // handle unauthorized request...
+    }
+}</pre>
