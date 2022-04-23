@@ -12,7 +12,7 @@ When writing tests, we do not want to hit the external API each time we run our 
 
 Let us start with an example. We will write a program to make search for cat breeds using [The Cat API](https://docs.thecatapi.com/). First, let us discover how this API works. Reading the docs for [GET /breeds/search](https://docs.thecatapi.com/api-reference/breeds/breeds-search) we can search for breeds using the `q` query parameter. Using curl, we can try this out:
 
-```shell
+```
 $ curl https://api.thecatapi.com/v1/breeds/search?q=sib | jq
 ```
 
@@ -94,7 +94,7 @@ Note: The serde\_json crate allows us to define a subset of the response. I only
 
 If we run our program, we should see something like:
 
-```shell
+```
 $ cargo run
 [
     Breed {
@@ -225,7 +225,7 @@ fn search_breeds() {
 }
 ```
 
-```shell
+```
 $ cargo test
     Finished test [unoptimized + debuginfo] target(s) in 0.15s
      Running unittests src/main.rs (target/debug/deps/rust_mocks-aa82d6388d1da1bd)
@@ -296,7 +296,7 @@ fn get_breed(
 
 Now we can run our server
 
-```shell
+```
 cargo run
    Compiling rust-mocks v0.1.0 (/Users/herman/Code/rust-mocks)
     Finished dev [unoptimized + debuginfo] target(s) in 2.10s
