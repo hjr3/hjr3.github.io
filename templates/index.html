@@ -11,6 +11,16 @@
     <meta name="description" content="{{ config.description }}">
 
     <link rel="stylesheet" href="{{ get_url(path="main.css", trailing_slash=false) }}">
+    <style>
+      a.zola-anchor {
+        font-size: 1.25rem;
+        margin-left: -2rem;
+        margin-right: 0.75rem;
+        text-decoration: none;
+        border-bottom-color: transparent;
+        cursor: pointer;
+      }
+    </style>
 
     {% if config.generate_feed %}
         <link rel="alternate" type={% if config.feed_filename == "atom.xml" %}"application/atom+xml"{% else %}"application/rss+xml"{% endif %} title="RSS" href="{{ get_url(path=config.feed_filename) | safe }}">
