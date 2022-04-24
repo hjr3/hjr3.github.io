@@ -8,6 +8,8 @@ tags=["rustlang"]
 
 When writing tests, we do not want to hit the external API each time we run our tests. If we are coming from a dynamic language, such as Node.JS, we may want to a solution like [fetch-mock][fetch-mock] which will patch the implementation of `fetch` at runtime. This is not practical in Rust. There are some attempts, like the [hotpatch](https://github.com/Shizcow/hotpatch) crate, but we will use a different strategy.
 
+The complete code for this post can be found at: [https://github.com/hjr3/the-cat-api-http-mocks](https://github.com/hjr3/the-cat-api-http-mocks)
+
 ## Calling The Cat API
 
 Let us start with an example. We will write a program to make search for cat breeds using [The Cat API](https://docs.thecatapi.com/). First, let us discover how this API works. Reading the docs for [GET /breeds/search](https://docs.thecatapi.com/api-reference/breeds/breeds-search) we can search for breeds using the `q` query parameter. Using curl, we can try this out:
