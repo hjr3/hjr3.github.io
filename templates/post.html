@@ -1,0 +1,74 @@
+{% import "macros/page.html" as page_macros %}
+{% extends "index.html" %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block extra_head %}
+<meta property="og:title" content="{{ page.title }}" />
+<meta name="author" content="Herman J. Radtke III" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="{{ page.summary }}" />
+<meta property="og:description" content="{{ page.summary }}" />
+<meta property="og:url" content="{{ current_url | safe }}" />
+<meta property="og:site_name" content="Herman J. Radtke III Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="{{ page.date }}" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="{{ page.title }}" />
+{% endblock extra_head %}
+
+{% block content %}
+
+<article class="post">
+    <header>
+        <h1>{{ page.title }}</h1>
+    </header>
+    <div class="content">
+        {{ page.content | safe }}
+    </div>
+
+    {{ page_macros::page_info(page=page) }}
+</article>
+
+{% endblock content %}
+
+{% block footer %}
+
+<p>
+<div class="twitter">
+  <a href="https://twitter.com/hermanradtke" target="_blank">
+    @hermanradtke</a>
+  - If you enjoyed this post, please
+  <a href="https://twitter.com/intent/tweet?url={{ page.permalink }}&text={{ page.title }}"
+     target="_blank">
+    share it with your followers</a>.
+</div>
+</p>
+
+<small>
+  <span
+      xmlns:dct="http://purl.org/dc/terms/"
+      property="dct:title"
+      >
+      {{ page.title }}
+  </span>
+    by
+    <a
+        xmlns:cc="http://creativecommons.org/ns#"
+        href="{{ page.permalink }}"
+        property="cc:attributionName"
+        rel="cc:attributionURL"
+        >
+        Herman J. Radtke III
+    </a>
+      is licensed under a
+      <a
+          rel="license"
+          href="http://creativecommons.org/licenses/by/4.0/"
+          >
+          Creative Commons Attribution 4.0 International License
+      </a>
+        .
+</small>
+
+{% endblock footer %}
