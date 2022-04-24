@@ -8,6 +8,8 @@ tags=["rustlang"]
 
 When writing tests, we do not want to hit the external API each time we run our tests. If we are coming from a dynamic language, such as Node.JS, we may want to a solution like [fetch-mock][fetch-mock] which will patch the implementation of `fetch` at runtime. This is not practical in Rust. There are some attempts, like the [hotpatch](https://github.com/Shizcow/hotpatch) crate, but we will use a different strategy.
 
+<!-- more -->
+
 The complete code for this post can be found at: [https://github.com/hjr3/the-cat-api-http-mocks](https://github.com/hjr3/the-cat-api-http-mocks)
 
 ## Calling The Cat API
