@@ -1,5 +1,5 @@
 +++
-title = "Sending UDP Messages Without DNS Lookups"
+title = "Sending UDP Messages in Node.js Without DNS Lookups"
 
 [taxonomies]
 tags=["node", "udp"]
