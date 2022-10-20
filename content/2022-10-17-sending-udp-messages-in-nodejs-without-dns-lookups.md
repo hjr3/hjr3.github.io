@@ -44,7 +44,7 @@ If we had a server that was sending StatsD messages using UDP, we almost certain
 
 We run our code and get the following:
 
-```shell
+```
 $ node udp.mjs
 msg 1 sent
 msg 2 sent
@@ -84,7 +84,7 @@ dns.lookup = (...args) => {
 
 Now, when we run our example, we see:
 
-```shell
+```
 $ node udp.mjs
 called dns.lookup
 called dns.lookup
@@ -146,7 +146,7 @@ socket.close();
 
 Now, we expect to bypass all calls to `dns.lookup` when we run our code.
 
-```shell
+```
 $ node udp.mjs
 called dns.lookup
 called dns.lookup
@@ -196,7 +196,7 @@ Now, we can remove the call to `dns.lookup` and use our IP address. We reference
 
 Now, we expect to not see any calls to the `dns.lookup` function when we run our code.
 
-```shell
+```
 $ node udp.mjs
 node:internal/errors:484
     ErrorCaptureStackTrace(err);
@@ -232,7 +232,7 @@ console.log('called lookup', { hostname, options });
 
 When we run our code again, we will see this line:
 
-```shell
+```
 calling dns.lookup { hostname: '0.0.0.0' }
 ```
 
@@ -262,7 +262,7 @@ console.log('msg 3 sent');
 
 Now, we run our code and it is working as expected:
 
-```shell
+```
 $ node udp.mjs
 calling dns.lookup { hostname: '0.0.0.0' }
 msg 1 sent
@@ -351,7 +351,7 @@ console.log('msg 4 sent');
 ```
 
 
-```shell
+```
 $ node udp.mjs
 calling dns.lookup { hostname: '0.0.0.0' }
 using cached address
@@ -484,7 +484,7 @@ socket.close();
 
 We run it and see that it now update the cache in the background without blocking the UDP message being sent.
 
-```shell
+```
 $ node udp.mjs
 calling dns.lookup { hostname: '0.0.0.0' }
 msg 1 sent
