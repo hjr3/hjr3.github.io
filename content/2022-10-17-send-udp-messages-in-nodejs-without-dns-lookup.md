@@ -16,7 +16,7 @@ In a hurry? You can [skip](#preventing-dns-lookup-in-hot-shots-statsd-client) to
 
 ## `dns.lookup` Is Always Called
 
-We create a UDP socket and send a message. We _can_ use a domain name with `dgram`, but it is bad idea. I explain why [here](#addendum-avoid-domain-names). Let us assume we have a single IP address instead.
+Let us create a simple program to send a message via UDP. We _can_ use a domain name with `node:dgram`, but it is bad idea. I explain why [here](#addendum-avoid-domain-names). Let us assume we have a single IP address instead.
 
 ```js
 import dgram from 'node:dgram';
@@ -36,7 +36,7 @@ socket.send('foo', 8125, ip, (err) => {
 });
 ```
 
-Now, we expect to bypass all calls to dns.lookup when we run our code.
+When we run this program, we expect to bypass all calls to `dns.lookup` when we run our code.
 
 ```
 $ node udp.mjs
@@ -102,7 +102,7 @@ Emitted 'error' event on Socket instance at:
 }
 ```
 
-The issue is that our socket first tries to bind to a local address (in this case `0.0.0.0`). Our custom lookup function returned `93.184.216.34` instead. The socket cannot bind to a non-local address like `93.184.216.34` and emitted an error that told us as much. Now that we know that our lookup function can be called in unexpected ways, let us change the function to bypass `dns.lookup` only when `hostname` matches our expected domain name.
+The issue is that our `socket.send` first tries to bind to a local address (e.g. `0.0.0.0`), which calls our custom lookup function. This is why our first example printed _called dns.lookup_ twice: first for the local address and the second time for the `host` parameter of `socket.send`. Our custom lookup function returned `93.184.216.34` both times. The socket cannot bind to a non-local address like `93.184.216.34` and emitted an error that told us as much. Now that we know that our lookup function can be called in unexpected ways, let us change the function to bypass `dns.lookup` only when `hostname` matches our expected domain name.
 
 If we want to be really safe, we can consider calling `dns.lookup` for any value of `hostname` other than `ip`.
 
