@@ -17,7 +17,7 @@ Outside of technology I enjoy pickleball, hiking, camping and reading.
 * Email - <a href="mailto:herman@hermanradtke.com">herman@hermanradtke.com</a>
 * Github - <a href="https://github.com/hjr3">github.com/hjr3</a>
 * GitLab - <a href="https://gitlab.com/hjr3">gitlab.com/hjr3</a>
-* Fediverse - <a rel="me" href="https://mastodon.social/@hjr3">@hjr3@mastodon.social</a>
+* Fediverse - <a rel="me" href="https://hachyderm.io/@hjr3">@hjr3@hachyderm.io</a>
 * Twitter - <a href="https://twitter.com/hermanradtke">@hermanradtke</a>
 * LinkedIn - <a href="https://www.linkedin.com/in/hradtke/">https://www.linkedin.com/in/hradtke</a>
 
