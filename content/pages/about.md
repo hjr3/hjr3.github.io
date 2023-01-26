@@ -23,6 +23,7 @@ Outside of technology I enjoy pickleball, hiking, camping and reading.
 
 ## Uses
 
+- **Desk** - Fully Jarvis standing desk
 - **Laptop** - MacBook Pro (13-inch, 2019)
 - **Docking station** - Dell Universal Dock D6000
 - **Monitors** - HP Z27n G2 x 2
