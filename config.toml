@@ -22,6 +22,7 @@ anpu_menu_links = [
     { url = "$BASE_URL/projects", name = "Projects" },
     { url = "$BASE_URL/talks", name = "Talks" },
     { url = "$BASE_URL/tags", name = "Tags" },
+    { url = "$BASE_URL/links", name = "Links" },
     { url = "$BASE_URL/atom.xml", name = "Feed" },
 ]
 anpu_date_format = "%B, %e %Y"
