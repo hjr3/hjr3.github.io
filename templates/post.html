@@ -20,6 +20,9 @@
   <meta property="twitter:title" content="{{ page.title }}" />
   <meta property="twitter:description" content="{{ page.summary }}" />
   <meta property="twitter:image" content="{{ get_url(path="glasses.jpg") }}" />
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({startOnLoad:true});</script>
 {% endblock extra_head %}
 
 {% block content %}
