@@ -126,4 +126,4 @@ sequenceDiagram
 
 The concept of webhooks are simple, but it is not easy to properly implement webhooks in a way that is robust and dependable. If the above scenarios are not properly handled, a webhook implementation is at risk of data loss and will require a support team to resolve incidents. Some failure scenarios are not possible to defend against without first documenting the interface, including pre-conditions and post-conditions, that both the origin and client should adhere to.
 
-I am building a webhook proxy, called [soldr](https://github.com/hjr3/soldr), to make webhook implementations resilient to the failure scenarios discussed above.
+I am building a webhook proxy, called [soldr](https://github.com/hjr3/soldr#soldr), to make webhook implementations resilient to the failure scenarios discussed above.
