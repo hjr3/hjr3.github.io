@@ -23,6 +23,20 @@
 
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script>mermaid.initialize({startOnLoad:true});</script>
+
+  <style>
+    code {
+      background-color: ghostwhite;
+    }
+
+    pre > code {
+      background-color: transparent;
+    }
+
+    details > summary {
+      display: list-item
+    }
+  </style>
 {% endblock extra_head %}
 
 {% block content %}
