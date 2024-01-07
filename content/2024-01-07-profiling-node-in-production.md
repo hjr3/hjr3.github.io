@@ -146,6 +146,18 @@ myapp-1704639385130.cpuprofile
 - The `--remote-name` option instructs `curl` to save that data into a local file instead of writing to `stdoout`.
 - The `--remote-header-name` option instructs `curl` to use the `Content-Disposition` filename instead of extracting a filename from the URL.
 - The `--silent` option instructs `curl` to disable the progress meter. This is my personal preference and not required.
+
+### Internal Port in Production
+
+In order to use profile in production, we need to:
+
+- identify the server we want to profile
+- get network access to send a request to that server
+
+In our case, our Node.js service emits telemetry that is aggregated into dashboards. Using these dashboards, we were able to identify which servers were using more CPU than the others.
+
+Once we identified the server, we were able to vpn into the production network and use some [kubectl](https://kubernetes.io/docs/reference/kubectl/) commands to send requests a specific server on a specific port.
+
 ## Analyzing the CPU Profile Using Flamegraphs
 
 We spent some time searching for the best way to view the results as a [flamegraph](https://www.brendangregg.com/flamegraphs.html). I was used to [0x][0x] handling this by default. I liked the output of [0x][0x] but I did not want to hack the code to render the results for an external file.
