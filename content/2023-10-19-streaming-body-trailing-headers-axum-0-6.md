@@ -14,6 +14,8 @@ Caveats:
 - The custom body implementation only works in axum 0.6, which uses http-body 0.4.4. The http-body crate changed in v1.0.0-rc.2. The concept is the same, but the custom `StreamBody` type will be different.
 - Trailers are only supported in hyper using HTTP/2. You can monitor https://github.com/hyperium/hyper/issues/2719 for HTTP/1.1 support.
 
+If you want to send trailer headers in HTTP/1.1 or you do not want to implement your own `Body`, please refer to [Stream a Body With Trailers in hyper 1.0 and axum 0.7](/streaming-body-trailing-headers-hyper-1-0-and-axum-0-7/)
+
 ### Set up
 
 In order to send trailers, we need an axum server that uses HTTP/2. Also, most implementations of HTTP/2 require TLS. Let us start from [axum/examples/tls-rustlls](https://github.com/tokio-rs/axum/tree/1e5be5bb693f825ece664518f3aa6794f03bfec6/examples/tls-rustls). This will give us a working HTTP/2 server that uses self-signed TLS certificates.
