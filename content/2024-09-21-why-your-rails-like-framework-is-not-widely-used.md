@@ -27,7 +27,7 @@ So, in the spirit of strong opinions and being wrong, below are my thoughts on w
 
 ## Auto-increment Keys Should Not Be IDs
 
-Ruby on Rails uses an auto-incrementing primary key for each database table. That was a fine default in 2003 considering [uuids were proposed in 2005](https://datatracker.ietf.org/doc/html/rfc4122), but we know better now. Letting a user enumerate all the keys in a table is a bad idea. Even if we properly secure our API, auto-increment keys still leak information. Seeing `/orders/43534` tells me a lot. And no, starting the order id from some number greater than 1 is not a solution.
+Rails-like frameworks make heavy use of [ORMs](https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping) and the [ActiveRecord](https://www.martinfowler.com/eaaCatalog/activeRecord.html) pattern, which almost always means there is an auto-incrementing primary key for each database table. That was a fine default when Ruby on Rails was created in 2003 considering [uuids were proposed in 2005](https://datatracker.ietf.org/doc/html/rfc4122), but we know better now. Letting a user enumerate all the keys in a table is a bad idea. Even if we properly secure our API, auto-increment keys still leak information. Seeing `/orders/43534` tells me a lot. And no, starting the order id from some number greater than 1 is not a solution.
 
 Use a uuid. I am not going to argue about performance. [Uuids are pretty fast](https://ardentperf.com/2024/02/03/uuid-benchmark-war/), your database probably fits in RAM and if you do need to scale the database then something like a uuid affords us horizontal scaling options that are very hard to do with an auto-increment primary key.
 
@@ -35,7 +35,7 @@ Use a uuid. I am not going to argue about performance. [Uuids are pretty fast](h
 
 ## API First
 
-My experience with Ruby on Rails is that the "view" was in a constant state of flux. I do not really fault Rails as the frontend ecosystem for web development has been fragmented for years with no clear winner. To make matters worse, the frontend space is now much more diverse. We now have mobile apps, TUIs, IoT, VR and many more interfaces. These frontends often have their own development stories that are not easily integrated with. The common denominator to all of these frontend interfaces is that they need an API. It is also exceedingly common to build APIs that are only called by other APIs. Focus on APIs first and worry about the view layer later.
+A rails-like framework typically uses the model–view–controller (MVC) pattern. One big impediment to establishing conventions is that the "view" has been in a constant state of flux for years as the frontend ecosystem for web development has been fragmented with no clear winner. To make matters worse, the frontend space is much more diverse than it was in 2003. We now have mobile apps, TUIs, IoT, VR and many more interfaces. These frontends often have their own development stories that are not easily integrated with. The common denominator to all of these frontend interfaces is that they need an API. It is also exceedingly common to build APIs that are only called by other APIs. Focus on APIs first and worry about the view layer later.
 
 Being API first is only part of the decision. We have multiple protocols to choose from: REST, GraphQL, gRPC and many more. We need a protocol that can be used for both public and private APIs. We know that public GraphQL APIs have adoption issues. Even [Github failed to convince developers to use their GraphQL API](https://github.blog/changelog/2022-08-18-deprecation-notice-graphql-for-packages/). So, GraphQL is out. We also know that gRPC makes heavy use of HTTP/2 but [the majority of websites still use HTTP/1.1](https://w3techs.com/technologies/details/ce-http2). That being said, [96% of browser support HTTP/2](https://caniuse.com/?search=HTTP%2F2) so gRPC could be a viable option. I think the main reason to continue to use a RESTful API is that every frontend supports RESTful APIs but not every frontend has the tooling to support gRPC.
 
@@ -53,78 +53,33 @@ I considered [RAML](https://raml.org/) as an alternative but Salesforce owns it 
 
 Scientifically poll developers and ask them what types of projects they dislike the most. I would bet a crisp $100 bill that "third-party integrations" is in the top 3. Why? A mentioned above, _the typical RESTful API is woefully under-specified._
 
-By default, Rails models are tightly integrated with the database. Here is an idea: consume an OpenAPI spec to codegen the models. Now, our rails-like framework can both generate and consume OpenAPI spec. This means we can now easily compose applications built with this rails-like framework. Think of the flywheel! The more applications using this API first rails-like framework, the easier it is for developers to do integrations. Internal teams would quickly see this benefit. Imagine SaaS companies using it as a value proposition: "our API is generated by rails-like framework and works seamlessly when consumed by that same rails-like framework".
+Most frameworks models tightly couple their models to the database. Here is an idea: _consume an OpenAPI spec to codegen the models_. Now, our rails-like framework can both generate and consume OpenAPI spec. This means we can now easily compose applications built with this rails-like framework. Think of the flywheel! The more applications using this API first rails-like framework, the easier it is for developers to do integrations. Internal teams would quickly see this benefit. Imagine SaaS companies using it as a value proposition: "our API is generated by rails-like framework and works seamlessly when consumed by that same rails-like framework".
+
+This approach also requires better tooling. Most API codegen tools produce low-quality code. My guess is that these tools try to handle every use case an OpenAPI document could have. Better tooling can be made by having strong opinions on what to support. For example, [progenitor](https://github.com/oxidecomputer/progenitor) is purpose-built to codegen OpenAPI documents from the aforementioned [dropshot](https://github.com/oxidecomputer/dropshot) framework.
 
 ## Feature First Structure
 
-Ruby on Rails uses a layer-first structure. If we have users, posts and comments our application would look something like:
+Most frameworks use a layer-first structure. Our controllers, models and views are grouped together.
 
 ```
-app/
+src/
 ├── controllers/
-│   ├── application_controller.rb
-│   ├── users_controller.rb
-│   ├── posts_controller.rb
-│   └── comments_controller.rb
 ├── models/
-│   ├── user.rb
-│   ├── post.rb
-│   └── comment.rb
-├── views/
-│   ├── users/
-│   │   ├── index.html.erb
-│   │   ├── show.html.erb
-│   │   ├── new.html.erb
-│   │   └── edit.html.erb
-│   ├── posts/
-│   │   ├── index.html.erb
-│   │   ├── show.html.erb
-│   │   ├── new.html.erb
-│   │   └── edit.html.erb
-│   └── comments/
-│       ├── _form.html.erb
-│       ├── _comment.html.erb
-│       └── index.html.erb
+└── views/
 ```
 
 As the application grows in size, developers will accidentally couple the layers together making your [monolithic application is difficult to scale](https://www.cortex.io/post/monoliths-vs-microservices-whats-the-difference) and harder to refactor. Before we start arguing about monoliths vs micro-services, I want to suggest that we can start with a better default for our project structure: feature first.
 
 A feature-first structure might look something like:
 ```
-app/
-├── features/
-│   ├── users/
-│   │   ├── controllers/
-│   │   │   └── users_controller.rb
-│   │   ├── models/
-│   │   │   └── user.rb
-│   │   └── views/
-│   │       ├── index.html.erb
-│   │       ├── show.html.erb
-│   │       ├── new.html.erb
-│   │       └── edit.html.erb
-│   ├── posts/
-│   │   ├── controllers/
-│   │   │   └── posts_controller.rb
-│   │   ├── models/
-│   │   │   └── post.rb
-│   │   └── views/
-│   │       ├── index.html.erb
-│   │       ├── show.html.erb
-│   │       ├── new.html.erb
-│   │       └── edit.html.erb
-│   └── comments/
-│       ├── controllers/
-│       │   └── comments_controller.rb
-│       ├── models/
-│       │   └── comment.rb
-│       └── views/
-│           ├── _form.html.erb
-│           ├── _comment.html.erb
-│           └── index.html.erb
+src/
+└── features/
+    ├── feature1/
+    ├── feature2/
+    └── feature3/
 ```
 
-You can bikeshed on aesthetics. Is `controllers/users_controller.rb`, `controllers/user.rb` or `user_controller.rb` better? I really do not care.
+The controllers, models and views are grouped together by feature. The [flutter community](https://codewithandrea.com/articles/flutter-project-structure/) is one group that is making feature-first a convention.
 
 Now, a feature first structure is no silver bullet. It is basically domain driven design and people make design mistakes all the time. I believe the upsides outweigh the downsides though. A feature first structure makes it harder to create accidental coupling. And when coupling is inevitably introduced, feature first makes it easier to refactor the code to remove that coupling. Finally, if you go [monolith first](https://martinfowler.com/bliki/MonolithFirst.html) a feature first structure makes it easier to extract parts of the monolith into separate services should scaling become an issue.
 
@@ -132,4 +87,4 @@ A feature-first approach would almost certainly necessitate examples that show d
 
 ## Make Decisions for Modern Application Development
 
-A rails-like framework will almost certainly not be successful by simply cloning Ruby on Rails as-is. Application development in 2003 was very different from application development today. Framework authors wanting adoption must establish new conventions that allow developers to get up and running quickly without making many decisions about setup while also avoiding common maintenance pitfalls.
+A rails-like framework will almost certainly not be successful by simply cloning Ruby on Rails conventions as-is. Application development in 2003 was very different from application development today. Framework authors wanting adoption must establish new conventions that allow developers to get up and running quickly without making many decisions about setup while also avoiding common maintenance pitfalls.
