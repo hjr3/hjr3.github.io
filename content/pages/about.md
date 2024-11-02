@@ -6,7 +6,7 @@ template = "page.html"
 aliases = ["/about.html", "/contact.html"]
 +++
 
-<img src="/glasses.jpg" />
+<img src="http://cdn.hermanradtke.com/glasses.jpg" />
 
 I am a sociologist turned full stack engineer with 13+ years of professional software development and 5+ years of engineering management experience. I was an early employee at HauteLook where I designed and built most of the original API that powered the HauteLook (and later Nordstromrack.com) website and mobile applications. Later, I became the VP of Engineering at Nordstromrack.com | HauteLook where I managed a Technology department of 150 people. I spent a past life writing a lot of PHP and C and used that knowledge to help maintain the <a href="https://pecl.php.net/package/memcache">pecl/memcache</a> and <a href="https://pecl.php.net/package/gearman">pecl/gearman</a> extensions. Currently, I am a Rust enthusiast, but primarily use web languages for my job.<br>
 
