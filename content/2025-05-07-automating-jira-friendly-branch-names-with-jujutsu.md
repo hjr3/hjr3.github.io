@@ -14,7 +14,6 @@ My commit message usually looks like this:
 ```
 feat(JIRA-12345): a short description
 
-
 a longer body with more detail about the change
 ```
 
@@ -35,7 +34,7 @@ To slugify this, I found [https://github.com/Mayeu/slugify](https://github.com/M
 
 I then added a function to `.zshrc` to create the bookmark:
 
-```
+```bash
 function jbm() {
   jj bookmark create -r @ $(jj fl | ~/bin/slugify | sed 's/eng/ENG/')
 }
