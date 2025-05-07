@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+
+    <title>rustlang</title>
+    <meta name="description" content="">
+
+    <link rel="alternate" type="application/atom+xml" title="Atom feed" href="https://hermanradtke.com/atom.xml">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="me" href="https://hachyderm.io/@hjr3">
+
+    <link rel="stylesheet" href="https://hermanradtke.com/main.css">
+    <style>
+      body {
+        font-size: min(max(1em, 1.3vw), 1.3em);
+      }
+
+      a.zola-anchor {
+        color: inherit;
+      }
+    </style>
+
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="Atom" href="https://hermanradtke.com/atom.xml">
+    
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https://hermanradtke.com/rss.xml">
+    
+    
+
+    
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to content</a>
+    <div class="container">
+        <header>
+            <h1 class="site-header">
+                <a href="https:&#x2F;&#x2F;hermanradtke.com">Herman J. Radtke III</a>
+            </h1>
+            <nav>
+                
+                
+                
+                <a  href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;about">About</a>
+                
+                
+                <a  href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;projects">Projects</a>
+                
+                
+                <a  href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;talks">Talks</a>
+                
+                
+                <a  href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;tags">Tags</a>
+                
+                
+                <a  href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;links">Links</a>
+                
+                
+                <a  href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;atom.xml">Feed</a>
+                
+                
+            </nav>
+        </header>
+        <main id="main" tabindex="-1">
+            
+<h1>Tag: #rustlang</h1>
+<div class="article-info">
+    <a href="https://hermanradtke.com/tags">To all tags</a>
+</div>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;streaming-body-trailing-headers-hyper-1-0-and-axum-0-7&#x2F;">Stream a Body With Trailers in hyper 1.0 and axum 0.7</a>
+            </h1>
+        </header>
+
+        
+        <div class="content post-summary">
+            <p>Hyper supports sending HTTP/1.1 Chunked Trailer Fields as of <a href="https://github.com/hyperium/hyper/releases/tag/v1.1.0">v1.1.0</a>. The <a href="https://crates.io/crates/http-body">http-body</a> is now at <a href="https://docs.rs/http-body/1.0.0/http_body/">v1.0</a> as well and uses frames to allow a stream to return data and trailers.</p>
+
+        </div>
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">April, 22 2024</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                    <li><a href="https://hermanradtke.com/tags/hyper/">#hyper</a></li>
+                    
+                    <li><a href="https://hermanradtke.com/tags/axum/">#axum</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;streaming-body-trailing-headers-axum-0-6&#x2F;">Stream a Body With Trailers in axum 0.6</a>
+            </h1>
+        </header>
+
+        
+        <div class="content post-summary">
+            <p>Hyper is designed to support streaming bodies. The current version of axum, v0.6, supports streaming a response. If we want to include <a href="https://datatracker.ietf.org/doc/html/rfc7230#section-4.4">trailers</a> (sometimes called "trailing headers") then we need to implement our own custom body.</p>
+
+        </div>
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">October, 19 2023</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                    <li><a href="https://hermanradtke.com/tags/hyper/">#hyper</a></li>
+                    
+                    <li><a href="https://hermanradtke.com/tags/axum/">#axum</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;landing-page-router-using-fastly-edge-compute-wasm&#x2F;">Landing Page Router Using Fastly Compute@Edge and WASM</a>
+            </h1>
+        </header>
+
+        
+        <div class="content post-summary">
+            <p>A company often has a landing page for first time visitors that is optimized for describing and educating that person on what product or service the company is offering. This page is usually not useful for people already familiar with the company. Ideally, a new user would see the marketing landing page and the returning user would see a more functional page. There are two common approaches to solving this problem that both have pitfalls. I want to explore a third option using Fastly's Compute@Edge offering.</p>
+
+        </div>
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">April, 24 2022</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;how-to-mock-functions-that-have-external-http-requests&#x2F;">How To Mock Functions That Have External HTTP Requests</a>
+            </h1>
+        </header>
+
+        
+        <div class="content post-summary">
+            <p>When writing tests, we do not want to hit the external API each time we run our tests. If we are coming from a dynamic language, such as Node.JS, we may want to a solution like <a href="https://www.npmjs.com/package/fetch-mock">fetch-mock</a> which will patch the implementation of <code>fetch</code> at runtime. This is not practical in Rust. There are some attempts, like the <a href="https://github.com/Shizcow/hotpatch">hotpatch</a> crate, but we will use a different strategy.</p>
+
+        </div>
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">April, 23 2022</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2019&#x2F;04&#x2F;01&#x2F;wasi-example-using-rust-and-lucet.html&#x2F;">WASI example using Rust and Lucet</a>
+            </h1>
+        </header>
+
+        
+        <div class="content post-summary">
+            <p>Lucet is Fastly's <a href="https://www.fastly.com/blog/announcing-lucet-fastly-native-webassembly-compiler-runtime">native WebAssembly compiler and runtime</a>. Using the Lucet runtime and Rust's <code>wasm32-unknown-wasi</code> target, we can create a WASM program that runs on the server.</p>
+
+        </div>
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">April,  1 2019</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2019&#x2F;03&#x2F;31&#x2F;lucet-in-five-minutes.html&#x2F;">fastly&#x2F;lucet in five minutes</a>
+            </h1>
+        </header>
+
+        
+        <div class="content post-summary">
+            <p>Lucet is Fastly's <a href="https://www.fastly.com/blog/announcing-lucet-fastly-native-webassembly-compiler-runtime">native WebAssembly compiler and runtime</a>. I am a big fan of Rust, Fastly and WASM. Especially WASM on the server via <a href="https://hacks.mozilla.org/2019/03/standardizing-wasi-a-webassembly-system-interface/">WASI</a>. I jumped right in and tried to get my own lucet program running, but the <a href="https://github.com/fastly/lucet/blob/8632b16faf2353727c9aa272d3ac65885eb9e1b9/README.md">setup</a> is a rather long process. My plan was to introduce lucet to some colleagues at my local Rust meetup. I am a huge fan of Rust, but the compile times are an issue. Spending 30 minutes on setup was a non-starter. I was excited when I saw that Fastly published a <a href="https://hub.docker.com/r/fastly/lucet">Docker container</a>:</p>
+
+        </div>
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">March, 31 2019</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2018&#x2F;03&#x2F;29&#x2F;removing-connection-state-from-mob.html&#x2F;">Removing Connection State In mob</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">March, 29 2018</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                    <li><a href="https://hermanradtke.com/tags/mio/">#mio</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2017&#x2F;03&#x2F;03&#x2F;future-mpsc-queue-with-tokio.html&#x2F;">Future Based mpsc Queue Example with Tokio</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">March,  3 2017</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2017&#x2F;02&#x2F;15&#x2F;weldr-reverse-proxy-initial-release-rust.html&#x2F;">Initial v0.1.0 release of weldr - a reverse proxy written in Rust</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">February, 15 2017</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2016&#x2F;09&#x2F;12&#x2F;rust-using-and_then-and-map-combinators-on-result-type.html&#x2F;">Using and_then and map combinators on the Rust Result Type</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">September, 12 2016</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2016&#x2F;08&#x2F;08&#x2F;introduction-to-nom-rust-parsing-combinator-framework.html&#x2F;">Introduction to nom: a parsing framework written in Rust</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">August,  8 2016</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2016&#x2F;05&#x2F;23&#x2F;connecting-webservice-database-rust.html&#x2F;">Connecting a webservice to a database in Rust</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">May, 23 2016</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2016&#x2F;05&#x2F;16&#x2F;creating-a-basic-webservice-in-rust.html&#x2F;">Creating a basic webservice in Rust</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">May, 16 2016</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2016&#x2F;03&#x2F;17&#x2F;unions-rust-ffi.html&#x2F;">Working with C unions in Rust FFI</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">March, 17 2016</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2016&#x2F;01&#x2F;18&#x2F;exploring-rust-std-library.html&#x2F;">Exploring the Rust Standard Library</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">January, 18 2016</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2015&#x2F;10&#x2F;23&#x2F;managing-connection-state-with-mio-rust.html&#x2F;">Managing Connection State With mio</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">October, 23 2015</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                    <li><a href="https://hermanradtke.com/tags/mio/">#mio</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2015&#x2F;09&#x2F;21&#x2F;get-data-from-a-url-rust.html&#x2F;">Get Data From A URL In Rust</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">September, 21 2015</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2015&#x2F;09&#x2F;12&#x2F;creating-a-simple-protocol-when-using-rust-and-mio.html&#x2F;">Creating A Simple Protocol When Using Rust and mio</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">September, 12 2015</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                    <li><a href="https://hermanradtke.com/tags/mio/">#mio</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2015&#x2F;08&#x2F;23&#x2F;using-docker-to-test-rust-on-linux.html&#x2F;">Using Docker to Test Rust on Linux</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">August, 23 2015</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2015&#x2F;08&#x2F;03&#x2F;creating-a-php-extension-to-rust.html&#x2F;">Creating a PHP Extension to Rust</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">August,  3 2015</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2015&#x2F;07&#x2F;22&#x2F;creating-a-multi-echo-server-using-rust-and-mio.html&#x2F;">Creating A Multi-echo Server using Rust and mio</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">July, 22 2015</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                    <li><a href="https://hermanradtke.com/tags/mio/">#mio</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2015&#x2F;07&#x2F;14&#x2F;the_with_function_pattern_in_rust.html&#x2F;">The _with Function Pattern in Rust</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">July, 14 2015</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2015&#x2F;07&#x2F;12&#x2F;my-basic-understanding-of-mio-and-async-io.html&#x2F;">My Basic Understanding of mio and Asynchronous IO</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">July, 12 2015</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2015&#x2F;06&#x2F;22&#x2F;effectively-using-iterators-in-rust.html&#x2F;">Effectively Using Iterators In Rust</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">June, 22 2015</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2015&#x2F;06&#x2F;09&#x2F;strategies-for-solving-cannot-move-out-of-borrowing-errors-in-rust.html&#x2F;">Strategies for solving &#x27;cannot move out of&#x27; borrowing errors in Rust</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">June,  9 2015</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2015&#x2F;05&#x2F;29&#x2F;creating-a-rust-function-that-returns-string-or-str.html&#x2F;">Creating a Rust function that returns a &amp;str or String</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">May, 29 2015</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2015&#x2F;05&#x2F;06&#x2F;creating-a-rust-function-that-accepts-string-or-str.html&#x2F;">Creating a Rust function that accepts String or &amp;str</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">May,  6 2015</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2015&#x2F;05&#x2F;03&#x2F;string-vs-str-in-rust-functions.html&#x2F;">String vs &amp;str in Rust functions</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">May,  3 2015</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2015&#x2F;04&#x2F;18&#x2F;replace-dicts-with-rust-enums.html&#x2F;">Replace Dicts With Rust Enums</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">April, 18 2015</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2015&#x2F;01&#x2F;14&#x2F;getters-functions-in-rust.html&#x2F;">Getter Functions In Rust</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">January, 14 2015</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2015&#x2F;01&#x2F;12&#x2F;terminal-window-size-with-rust-ffi.html&#x2F;">Terminal Window Size With Rust FFI</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">January, 12 2015</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+    <article class="post-list">
+        <header> 
+            <h1>
+                <a href="https:&#x2F;&#x2F;hermanradtke.com&#x2F;2015&#x2F;01&#x2F;05&#x2F;hypermedia-api-using-rustlang-nickel.html&#x2F;">Using the Nickel.rs Router Macro</a>
+            </h1>
+        </header>
+
+        
+        
+        
+    <div class="article-info">
+        
+        <div class="article-date">January,  5 2015</div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://hermanradtke.com/tags/rustlang/">#rustlang</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    </article>
+
+
+
+
+
+        </main>
+        <footer>
+          
+          
+        </footer>
+    </div>
+</body>
+</html>
